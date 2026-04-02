@@ -7,6 +7,8 @@ main:
     url: /categories/data-statistics/
   - title: "트렌드"
     url: /categories/trend-research/
+  - title: "경영·경제"
+    url: /categories/business-economy/
   - title: "하네스"
     url: /categories/harness-engineering/
   - title: "소개"
