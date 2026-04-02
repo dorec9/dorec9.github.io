@@ -7,6 +7,10 @@ planning-insight:
     date: "2026-04-03"
     title: "IT 프로젝트 ROI 산출 실무 — 제안서에서 경영진을 설득하는 수치 만들기"
     keywords: [ROI, NPV, IRR, TCO, IT기획, 투자타당성, 사업계획서]
+  - slug: "stakeholder-management-power-interest-raci"
+    date: "2026-04-03"
+    title: "IT 프로젝트 이해관계자 관리 실무 — Power-Interest Grid와 RACI로 정리하는 법"
+    keywords: [이해관계자관리, Power-Interest Grid, RACI, 프로젝트관리, IT기획, PMBOK]
 
 data-statistics:
   - slug: "ab-test-sample-size-mistakes"
