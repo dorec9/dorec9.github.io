@@ -25,8 +25,17 @@ date: YYYY-MM-DD
 categories: category-slug
 tags: [태그1, 태그2, 태그3]
 excerpt: "한 줄 요약 (100자 이내)"
+# 글 내용에 따라 선택적 추가
+mermaid: true    # 다이어그램/플로우차트 포함 시
+chart: true      # 데이터 차트 포함 시
+math: true       # 수식 포함 시
 ---
 ```
+
+## 라이브러리 활용
+- Mermaid: 마크다운 코드블록 ```mermaid로 다이어그램 삽입 (flowchart, sequence, gantt 등)
+- Chart.js: `<canvas>` + `<script>`로 차트 삽입 (bar, line, pie 등)
+- KaTeX: `$인라인$` 또는 `$$블록$$`으로 수식 삽입
 
 ## 카테고리 슬러그
 - project-retrospect, planning-insight, data-statistics

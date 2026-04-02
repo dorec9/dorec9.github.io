@@ -29,6 +29,10 @@ author:
       icon: "fab fa-fw fa-github"
       url: "https://github.com/Dohyeon22"
 
+# Search
+search: true
+search_full_content: true
+
 # Reading
 words_per_minute: 200
 
@@ -50,6 +54,8 @@ defaults:
       related: true
       show_date: true
       toc: true
+      toc_label: "목차"
+      toc_sticky: true
   - scope:
       path: "_pages"
       type: pages
@@ -70,6 +76,11 @@ markdown: kramdown
 kramdown:
   input: GFM
   hard_wrap: false
+  math_engine: null
+
+# Scripts
+after_footer_scripts:
+  - /assets/js/custom.js
 
 # Include
 include:

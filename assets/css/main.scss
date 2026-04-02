@@ -3,8 +3,266 @@
 
 @charset "utf-8";
 
-$sans-serif: "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-$monospace: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+$sans-serif: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+$monospace: "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+$max-width: 1600px;
+$x-large: 1600px;
+$right-sidebar-width-narrow: 200px;
+$right-sidebar-width: 250px;
 
 @import "minimal-mistakes/skins/air";
 @import "minimal-mistakes";
+
+// ===========================================
+// CSS 변수
+// ===========================================
+:root {
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+  --radius: 6px;
+}
+
+// ===========================================
+// 부드러운 스크롤
+// ===========================================
+html {
+  scroll-behavior: smooth;
+}
+
+// ===========================================
+// 한국어 폰트 크기 조정
+// ===========================================
+html {
+  font-size: 18px;
+
+  @include breakpoint($medium) {
+    font-size: 19px;
+  }
+
+  @include breakpoint($large) {
+    font-size: 20px;
+  }
+
+  @include breakpoint($x-large) {
+    font-size: 20px;
+  }
+}
+
+
+// ===========================================
+// 본문 가독성
+// ===========================================
+.page__content {
+  p, li, dl {
+    line-height: 1.8;
+  }
+}
+
+// ===========================================
+// 카드 인터랙션
+// ===========================================
+.archive__item {
+  border-radius: var(--radius);
+  padding: 0.75rem;
+  transition: transform var(--transition-normal),
+              box-shadow var(--transition-normal);
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  &:active {
+    transform: translateY(0) scale(0.98);
+    transition-duration: 0.1s;
+  }
+}
+
+.archive__item-title a {
+  transition: color var(--transition-fast);
+}
+
+// ===========================================
+// 이미지 hover 확대
+// ===========================================
+.archive__item-teaser {
+  overflow: hidden;
+  border-radius: var(--radius);
+
+  img {
+    transition: transform 0.3s ease;
+  }
+}
+
+.archive__item:hover .archive__item-teaser img {
+  transform: scale(1.05);
+}
+
+// ===========================================
+// 포커스 접근성 (WCAG 2.4.7)
+// ===========================================
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid $primary-color;
+  outline-offset: 2px;
+}
+
+// ===========================================
+// 페이지 로드 fade-in
+// ===========================================
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page__content {
+  animation: fadeInUp 0.4s ease-out both;
+}
+
+// ===========================================
+// 스크롤 프로그레스 바
+// ===========================================
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(90deg, #0076df, #00b4d8);
+  z-index: 9999;
+  transition: width 0.1s linear;
+  pointer-events: none;
+}
+
+// ===========================================
+// Back-to-top 버튼
+// ===========================================
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: $primary-color;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+  z-index: 999;
+  box-shadow: var(--shadow-md);
+
+  &:hover {
+    transform: translateY(-3px);
+  }
+
+  &.is-visible {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+// ===========================================
+// 코드 블록 복사 버튼
+// ===========================================
+div.highlighter-rouge,
+figure.highlight {
+  position: relative;
+}
+
+.code-copy-btn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s;
+  z-index: 10;
+
+  &:hover {
+    background: #e8e8e8;
+  }
+}
+
+div.highlighter-rouge:hover .code-copy-btn,
+figure.highlight:hover .code-copy-btn {
+  opacity: 1;
+}
+
+// ===========================================
+// 라이트박스
+// ===========================================
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+  cursor: zoom-out;
+
+  &.is-open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  img {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  }
+}
+
+// ===========================================
+// 본문 이미지 클릭 가능 표시
+// ===========================================
+.page__content img:not(.author__avatar):not([src*="emoji"]) {
+  cursor: zoom-in;
+  border-radius: var(--radius);
+  transition: box-shadow var(--transition-normal);
+
+  &:hover {
+    box-shadow: var(--shadow-md);
+  }
+}
+
+// ===========================================
+// 접근성: 모션 줄이기 (필수)
+// ===========================================
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

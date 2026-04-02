@@ -1,0 +1,23 @@
+<div class="reading-progress" id="readingProgress"></div>
+
+<button class="back-to-top" id="backToTop" aria-label="맨 위로 이동">&#8593;</button>
+
+<div class="lightbox-overlay" id="lightbox">
+  <img src="" alt="" id="lightboxImg">
+</div>
+
+{% if page.mermaid %}
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('pre code.language-mermaid').forEach(function(el) {
+    var pre = el.parentElement;
+    var div = document.createElement('div');
+    div.className = 'mermaid';
+    div.textContent = el.textContent;
+    pre.parentElement.replaceChild(div, pre);
+  });
+  mermaid.initialize({ startOnLoad: true, theme: 'default' });
+});
+</script>
+{% endif %}
