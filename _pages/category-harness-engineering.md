@@ -6,3 +6,8 @@ taxonomy: harness-engineering
 ---
 
 AI 에이전트 블로그 자동화 하네스 설계 과정을 기록합니다.
+
+{% assign posts = site.categories["harness-engineering"] %}
+{% for post in posts %}
+  {% include archive-single.html type="list" %}
+{% endfor %}

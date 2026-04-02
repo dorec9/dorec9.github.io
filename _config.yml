@@ -71,6 +71,10 @@ kramdown:
   input: GFM
   hard_wrap: false
 
+# Include
+include:
+  - _pages
+
 # Exclude
 exclude:
   - Gemfile
