@@ -1,0 +1,15 @@
+main:
+  - title: "프로젝트 회고"
+    url: /categories/project-retrospect/
+  - title: "직무 인사이트"
+    url: /categories/planning-insight/
+  - title: "데이터 분석"
+    url: /categories/data-statistics/
+  - title: "트렌드"
+    url: /categories/trend-research/
+  - title: "경영·경제"
+    url: /categories/business-economy/
+  - title: "하네스 설계"
+    url: /categories/harness-engineering/
+  - title: "소개"
+    url: /about/

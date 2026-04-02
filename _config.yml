@@ -1,0 +1,79 @@
+# Site Settings
+title: "이도현 | 기획자의 기술 블로그"
+subtitle: "경영기획·IT기획 실무 인사이트"
+name: "이도현"
+description: "경영기획/IT기획 직무 관점의 기술 블로그. 프로젝트 회고, 데이터 분석, 업계 트렌드를 실무자 시점으로 기록합니다."
+url: ""
+baseurl: ""
+locale: "ko-KR"
+
+# Theme
+remote_theme: "mmistakes/minimal-mistakes@4.26.2"
+minimal_mistakes_skin: "air"
+
+# Plugins
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-gist
+  - jekyll-feed
+  - jekyll-include-cache
+
+# Author
+author:
+  name: "이도현"
+  bio: "경영기획/IT기획을 지향하는 기획자. 데이터 기반 의사결정과 AI 활용 업무 자동화에 관심이 많습니다."
+  location: "Seoul, Korea"
+  links:
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/Dohyeon22"
+
+# Reading
+words_per_minute: 200
+
+# Pagination
+paginate: 10
+paginate_path: /page:num/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      comments: false
+      share: false
+      related: true
+      show_date: true
+      toc: true
+  - scope:
+      path: "_pages"
+      type: pages
+    values:
+      layout: single
+      author_profile: true
+
+# Category archive
+category_archive:
+  type: liquid
+  path: /categories/
+
+# Encoding
+encoding: "utf-8"
+
+# Markdown
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+# Exclude
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - CLAUDE.md
