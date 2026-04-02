@@ -16,7 +16,11 @@ trend-research:
     title: "2026 에이전틱 AI 기업 도입 현황 — 80%가 도입했지만 40%는 실패한다"
     keywords: [에이전틱AI, AI에이전트, 멀티에이전트, 기업도입, AI거버넌스]
 
-business-economy: []
+business-economy:
+  - slug: "global-supply-chain-tariff-war-korea-strategy"
+    date: "2026-04-02"
+    title: "관세 전쟁 속 글로벌 공급망 재편 — 수치로 읽는 지형 변화와 한국 기업 대응"
+    keywords: [공급망, 관세, 미중무역, 디리스킹, 프렌드쇼어링, 한국기업, ASEAN, CBAM, USMCA]
 
 project-retrospect:
   - slug: "ai-interview-agent-retrospect"
