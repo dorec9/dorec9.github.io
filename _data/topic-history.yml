@@ -10,7 +10,11 @@ data-statistics:
     title: "A/B테스트 표본 크기 설계 — 실무에서 자주 틀리는 5가지와 올바른 계산법"
     keywords: [A/B테스트, 표본크기, 통계적유의성, 검정력, MDE]
 
-trend-research: []
+trend-research:
+  - slug: "agentic-ai-enterprise-adoption-2026"
+    date: "2026-04-02"
+    title: "2026 에이전틱 AI 기업 도입 현황 — 80%가 도입했지만 40%는 실패한다"
+    keywords: [에이전틱AI, AI에이전트, 멀티에이전트, 기업도입, AI거버넌스]
 
 business-economy: []
 
