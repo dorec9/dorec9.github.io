@@ -4,7 +4,11 @@ planning-insight:
     title: "경영기획자를 위한 KPI 설계 실무 — SMART 원칙부터 OKR 연계까지"
     keywords: [KPI, SMART, OKR, 경영기획, 성과관리]
 
-data-statistics: []
+data-statistics:
+  - slug: "ab-test-sample-size-mistakes"
+    date: "2026-04-02"
+    title: "A/B테스트 표본 크기 설계 — 실무에서 자주 틀리는 5가지와 올바른 계산법"
+    keywords: [A/B테스트, 표본크기, 통계적유의성, 검정력, MDE]
 
 trend-research: []
 
