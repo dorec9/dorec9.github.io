@@ -1,0 +1,24 @@
+repos:
+  ai-interview-agent:
+    last_sha: null
+    last_post_date: null
+    post_slug: null
+    status: "not_covered"
+  AI-Lecture-Agent:
+    last_sha: null
+    last_post_date: null
+    post_slug: null
+    status: "not_covered"
+  kt_library:
+    last_sha: null
+    last_post_date: null
+    post_slug: null
+    status: "not_covered"
+  Randi_RD-agent:
+    last_sha: null
+    last_post_date: null
+    post_slug: null
+    status: "not_covered"
+
+excluded:
+  - dorec9.github.io
