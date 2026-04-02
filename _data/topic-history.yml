@@ -3,6 +3,10 @@ planning-insight:
     date: "2026-04-02"
     title: "경영기획자를 위한 KPI 설계 실무 — SMART 원칙부터 OKR 연계까지"
     keywords: [KPI, SMART, OKR, 경영기획, 성과관리]
+  - slug: "it-project-roi-calculation-guide"
+    date: "2026-04-03"
+    title: "IT 프로젝트 ROI 산출 실무 — 제안서에서 경영진을 설득하는 수치 만들기"
+    keywords: [ROI, NPV, IRR, TCO, IT기획, 투자타당성, 사업계획서]
 
 data-statistics:
   - slug: "ab-test-sample-size-mistakes"
