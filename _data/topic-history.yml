@@ -1,0 +1,21 @@
+planning-insight:
+  - slug: "kpi-design-smart-okr-guide"
+    date: "2026-04-02"
+    title: "경영기획자를 위한 KPI 설계 실무 — SMART 원칙부터 OKR 연계까지"
+    keywords: [KPI, SMART, OKR, 경영기획, 성과관리]
+
+data-statistics: []
+
+trend-research: []
+
+business-economy: []
+
+project-retrospect: []
+
+harness-engineering:
+  - slug: "ubuntu-ai-coding-environment-setup"
+    date: "2026-04-02"
+    title: "Ubuntu 24.04에서 AI 코딩 환경 구축하기"
+  - slug: "claude-code-blog-harness-setup"
+    date: "2026-04-02"
+    title: "Claude Code 하네스로 블로그 자동화 시스템 구축한 과정"
