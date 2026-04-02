@@ -14,7 +14,11 @@ trend-research: []
 
 business-economy: []
 
-project-retrospect: []
+project-retrospect:
+  - slug: "ai-interview-agent-retrospect"
+    date: "2026-04-02"
+    title: "LangGraph로 AI 면접 시뮬레이터를 만든 과정 — 설계 판단과 실패 기록"
+    keywords: [LangGraph, RAG, Chroma, GPT-4o-mini, Gradio, AI에이전트, 면접준비, 취업준비]
 
 harness-engineering:
   - slug: "ubuntu-ai-coding-environment-setup"

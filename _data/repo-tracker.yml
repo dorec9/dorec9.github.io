@@ -1,9 +1,9 @@
 repos:
   ai-interview-agent:
-    last_sha: null
-    last_post_date: null
-    post_slug: null
-    status: "not_covered"
+    last_sha: "pending"
+    last_post_date: "2026-04-02"
+    post_slug: "ai-interview-agent-retrospect"
+    status: "published"
   AI-Lecture-Agent:
     last_sha: null
     last_post_date: null
