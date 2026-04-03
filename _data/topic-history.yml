@@ -58,7 +58,7 @@ project-retrospect:
     title: "국가R&D 공고 자동화 에이전트를 만든 과정 — 유사 RFP 탐색·발표 스크립트 생성과 7컨테이너 배포 구성"
     repo: "dorec9/Randi_RD-agent"
     sha: "7e5f629"
-    keywords: [FastAPI, ChromaDB, LangGraph, Gemini, Docker, RAG, 국가RD, 기업마당, sentence-transformers, Spring Boot]
+    keywords: [FastAPI, ChromaDB, LangGraph, Gemini, Docker, RAG, 국가RD, 기업마당, multilingual-e5-base, Spring Boot]
 
 harness-engineering:
   - slug: "ubuntu-ai-coding-environment-setup"

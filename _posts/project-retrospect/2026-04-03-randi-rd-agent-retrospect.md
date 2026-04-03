@@ -2,7 +2,7 @@
 title: "국가R&D 공고 자동화 에이전트를 만든 과정 — 유사 RFP 탐색·발표 스크립트 생성과 7컨테이너 배포 구성"
 date: 2026-04-03
 categories: [project-retrospect]
-tags: [FastAPI, ChromaDB, LangGraph, Gemini, Docker, RAG, 국가RD, 기업마당, sentence-transformers, Spring Boot]
+tags: [FastAPI, ChromaDB, LangGraph, Gemini, Docker, RAG, 국가RD, 기업마당, multilingual-e5-base, Spring Boot]
 excerpt: "국가R&D 공고를 분석하고 유사 RFP를 탐색한 뒤 발표 스크립트까지 생성하는 에이전트를 팀 프로젝트로 구현했다. 내가 담당한 Step 2 유사 RFP 탐색, Step 4 발표 스크립트/Q&A 생성, 7개 서비스 Docker Compose 배포 구성에서 겪은 판단과 실패를 정리한다."
 ---
 
@@ -67,13 +67,13 @@ ChromaDB를 법령용·전략용 2개 컨테이너로 분리한 이유는 컬렉
 
 ### 실제로 겪은 문제
 
-Track A와 Track B 결과 품질이 불균일했다. 법령 ChromaDB는 조문 단위로 청킹해 임베딩했는데, 너무 짧은 청크(1~2문장)는 문맥이 없어 유사도 점수가 낮게 나왔다. 청크 크기를 256 토큰에서 512 토큰으로 늘리고 overlap을 64 토큰으로 설정하자 상위 5건에서 관련 없는 조문이 사라졌다.
+Track A와 Track B 결과 품질이 불균일했다. 법령 ChromaDB는 조문 단위로 청킹해 임베딩했는데, 너무 짧은 청크(1~2문장)는 문맥이 없어 유사도 점수가 낮게 나왔다. 최종 설정은 `split_chunks(text, size=800, overlap=120)`이다. 청크 크기 800자, 오버랩 120자로 잡아 조문 경계에서 문맥이 잘리는 문제를 줄였다.
 
 Track B는 과거 공고 데이터가 충분하지 않아 결과가 빈약했다. 데이터 양 부족 문제는 에이전트 설계로 해결할 수 없어서, 프롬프트에 "유사 사례가 부족할 경우 공고 유형과 일반적인 R&D 사업 특성을 기반으로 추론"이라는 지시를 추가했다. 근본 해결은 아니지만 출력이 빈 응답보다는 나았다.
 
 ### sentence-transformers 모델 선택
 
-기본 `all-MiniLM-L6-v2`는 영어 최적화 모델이다. 한국어 법령 텍스트에 적용했을 때 유사도 점수 분포가 좁았다. `jhgan/ko-sroberta-multitask`로 교체했을 때 상위 3건 중 관련 법령 비율이 높아졌다. 다만 모델 크기가 커서 컨테이너 초기 로딩 시간이 약 30초 늘었다.
+임베딩 모델은 `intfloat/multilingual-e5-base`를 사용한다. 법령 인제스트(`law_ingest_parquet.py`), 벡터 DB 조회(`vector_db.py`), 데이터 인제스트(`db_ingest.py`) 모두 동일한 모델이다. 환경변수(`CHROMA_EMBED_MODEL_NAME`, `LAW_EMBED_MODEL_NAME`)로 오버라이드할 수 있지만 기본값은 모두 `intfloat/multilingual-e5-base`다. 이 모델은 100개 이상 언어를 지원하는 다국어 임베딩 모델로, 한국어 법령 텍스트와 영문 기술 문서를 같은 벡터 공간에서 비교할 수 있다 ([모델 카드](https://huggingface.co/intfloat/multilingual-e5-base)).
 
 ---
 
@@ -128,7 +128,7 @@ Step 3·4만 FastAPI로 라우팅하고 나머지는 Spring으로 보낸다. Ste
 
 ## 배운 것과 개선할 점
 
-**임베딩 모델은 도메인을 먼저 확인해야 한다.** `all-MiniLM-L6-v2`는 영어 우선 모델이라 한국어 법령 텍스트에 바로 쓰면 검색 품질이 낮다. 프로젝트 초반에 모델 선택에 30분이라도 더 썼다면 중반의 디버깅 시간 2일을 아꼈을 것이다.
+**임베딩 모델은 다국어 지원 여부를 먼저 확인해야 한다.** `intfloat/multilingual-e5-base`는 다국어 모델이라 한국어 법령과 영문 기술 문서를 하나의 벡터 공간에서 처리할 수 있었다. 영어 전용 모델을 먼저 시도했다면 모델 교체에 추가 시간이 들었을 것이다.
 
 **LLM 출력 포맷은 API 파라미터로 강제하는 게 프롬프트 조정보다 낫다.** 프롬프트로 JSON 형식을 유도하는 방법은 모델 버전이 바뀌면 깨진다. `response_mime_type`처럼 API가 지원하는 파라미터를 먼저 확인하는 습관이 필요하다.
 
