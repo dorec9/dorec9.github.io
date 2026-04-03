@@ -27,6 +27,10 @@ trend-research:
     date: "2026-04-02"
     title: "2026 에이전틱 AI 기업 도입 현황 — 80%가 도입했지만 40%는 실패한다"
     keywords: [에이전틱AI, AI에이전트, 멀티에이전트, 기업도입, AI거버넌스]
+  - slug: "lowcode-nocode-adoption-governance"
+    date: "2026-04-03"
+    title: "로우코드·노코드 플랫폼 도입 현황 — 시장 수치와 기업이 마주하는 거버넌스 과제"
+    keywords: [로우코드, 노코드, 시티즌개발, 섀도우IT, 거버넌스, IT기획]
 
 business-economy:
   - slug: "global-supply-chain-tariff-war-korea-strategy"
