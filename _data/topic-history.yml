@@ -17,6 +17,10 @@ data-statistics:
     date: "2026-04-02"
     title: "A/B테스트 표본 크기 설계 — 실무에서 자주 틀리는 5가지와 올바른 계산법"
     keywords: [A/B테스트, 표본크기, 통계적유의성, 검정력, MDE]
+  - slug: "cohort-retention-nday-rolling-monthly"
+    date: "2026-04-03"
+    title: "코호트 분석으로 리텐션 측정하기 — N-Day·Rolling·월간 리텐션의 차이와 선택 기준"
+    keywords: [코호트분석, 리텐션, N-Day리텐션, Rolling리텐션, 데이터분석, SaaS]
 
 trend-research:
   - slug: "agentic-ai-enterprise-adoption-2026"
