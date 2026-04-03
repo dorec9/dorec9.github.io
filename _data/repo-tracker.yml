@@ -15,10 +15,10 @@ repos:
     post_slug: null
     status: "not_covered"
   Randi_RD-agent:
-    last_sha: null
-    last_post_date: null
-    post_slug: null
-    status: "not_covered"
+    last_sha: "7e5f629"
+    last_post_date: "2026-04-03"
+    post_slug: "randi-rd-agent-retrospect"
+    status: "published"
 
 excluded:
   - dorec9.github.io
