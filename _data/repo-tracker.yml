@@ -5,10 +5,10 @@ repos:
     post_slug: "ai-interview-agent-retrospect"
     status: "published"
   AI-Lecture-Agent:
-    last_sha: null
-    last_post_date: null
-    post_slug: null
-    status: "not_covered"
+    last_sha: "3d3e3b10f640d7ef6d081b128f25e62d0236bb75"
+    last_post_date: "2026-04-03"
+    post_slug: "ai-lecture-agent-retrospect"
+    status: "published"
   kt_library:
     last_sha: null
     last_post_date: null
