@@ -37,6 +37,10 @@ business-economy:
     date: "2026-04-02"
     title: "관세 전쟁 속 글로벌 공급망 재편 — 수치로 읽는 지형 변화와 한국 기업 대응"
     keywords: [공급망, 관세, 미중무역, 디리스킹, 프렌드쇼어링, 한국기업, ASEAN, CBAM, USMCA]
+  - slug: "vc-investment-trends-ai-concentration-2026"
+    date: "2026-04-03"
+    title: "2026년 벤처 투자 동향 — AI 집중·양극화 심화, 수치로 읽는 한국과 글로벌 VC 시장"
+    keywords: [벤처투자, VC, AI투자, 스타트업, 양극화, 한국VC]
 
 project-retrospect:
   - slug: "ai-interview-agent-retrospect"
