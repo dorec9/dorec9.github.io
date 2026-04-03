@@ -2,7 +2,7 @@
 title: "PPT를 강의 영상으로 바꾸는 AI 에이전트를 만든 과정 — LangGraph 선형 파이프라인과 설계 판단"
 date: 2026-04-03
 categories: [project-retrospect]
-tags: [LangGraph, Gemini, GoogleCloudTTS, MoviePy, Gradio, AI에이전트, 멀티모달, 강의자동화]
+tags: [LangGraph, GPT-4o-mini, OpenAI-TTS, MoviePy, Gradio, AI에이전트, 멀티모달, 강의자동화]
 excerpt: "PPT 파일을 넣으면 슬라이드 분석, 대본 생성, 음성 합성, 영상 렌더링까지 자동으로 수행하는 시스템을 LangGraph로 만들었다. 면접 에이전트와 달리 조건 분기 없는 선형 구조를 선택한 이유와 코드에서 발견한 문제들을 기록한다."
 ---
 
@@ -28,17 +28,18 @@ KT AIVLE School 프로젝트로 만든 AI 강의 에이전트다.
 
 | 구성요소 | 선택 기술 | 이유 |
 |---|---|---|
-| LLM + 슬라이드 분석 | Gemini 1.5 Flash | 텍스트·이미지·표를 동시에 처리하는 멀티모달 모델 |
+| LLM + 슬라이드 분석 | GPT-4o-mini | 텍스트·이미지·표를 동시에 처리하는 멀티모달 모델, 비용 대비 성능 |
 | 에이전트 오케스트레이션 | LangGraph | 상태 기반 워크플로우로 각 단계 입출력 추적 |
-| 음성 합성 | Google Cloud TTS | Gemini와 같은 Google 생태계, API 품질 검증됨 |
+| 음성 합성 | OpenAI TTS (tts-1) | LLM과 같은 OpenAI 생태계, 단일 API 키로 관리 |
 | 영상 합성 | MoviePy | 파이썬에서 슬라이드 이미지 + 오디오 합성 처리 |
 | UI | Gradio | 파일 업로드·영상 출력 인터페이스를 코드 몇 줄로 구성 |
 
-Gemini 1.5 Flash를 선택한 이유는 입력 형태에 있다.  
+GPT-4o-mini를 선택한 이유는 입력 형태와 비용에 있다.  
 PPT 슬라이드에는 텍스트뿐 아니라 표, 그림, 차트가 섞여 있다.  
 텍스트만 처리하는 모델은 시각 정보를 분석하지 못한다.  
-Gemini 1.5 Flash는 텍스트와 이미지를 하나의 프롬프트로 받는다 ([Google Gemini 공식 문서](https://ai.google.dev/gemini-api/docs/models)).  
-슬라이드를 이미지로 변환해 넘기면 시각 정보까지 분석 대상에 포함된다.
+GPT-4o-mini는 텍스트와 이미지를 하나의 프롬프트로 받는 멀티모달 모델이다 ([OpenAI 공식 문서](https://platform.openai.com/docs/models)).  
+슬라이드를 이미지로 변환해 넘기면 시각 정보까지 분석 대상에 포함된다.  
+GPT-4o 대비 비용이 낮아 슬라이드 수십 장을 처리해도 API 비용 부담이 적다.
 
 LangGraph는 상태 기반 에이전트 오케스트레이션 프레임워크다 ([LangGraph 공식 문서](https://www.langchain.com/langgraph)).  
 단계가 3개뿐인 선형 파이프라인에도 굳이 LangGraph를 쓴 이유가 있다.  
@@ -98,9 +99,9 @@ class State(TypedDict):
 
 - `ppt_path`: 사용자 입력, 초기값
 - `image_paths`: analyze 노드에서 슬라이드 이미지 변환 후 채워짐
-- `ppt_analysis`: analyze 노드에서 Gemini 분석 결과
+- `ppt_analysis`: analyze 노드에서 GPT-4o-mini 분석 결과
 - `scripts`: generate_script 노드에서 생성
-- `audio_paths`: synthesize 노드에서 Google Cloud TTS 결과
+- `audio_paths`: synthesize 노드에서 OpenAI TTS 결과
 - `final_video_path`: synthesize 노드 종료 시 MoviePy 렌더링 결과
 - `status`: 진행 상태 문자열
 
@@ -122,15 +123,15 @@ class State(TypedDict):
 
 ## 4. 배운 점과 개선할 점
 
-### 발견한 문제: README와 코드의 LLM 불일치
+### 발견한 문제: 모듈 코드와 노트북의 LLM 불일치
 
-커밋 이력에 "Update LLM reference from Google Gemini to GPT 4o-mini"라는 메시지가 있다.  
-그러나 `nodes.py`에는 `google.generativeai`의 `GenerativeModel('gemini-1.5-flash')`가 그대로 남아 있다.  
-README는 GPT-4o-mini라고 적혀 있고 코드는 Gemini를 쓴다.
+`src/nodes.py`에는 `GenerativeModel('gemini-1.5-flash')`가 남아 있다.  
+그러나 실제 구현체인 노트북에서는 `LLM_MODEL = "gpt-4o-mini"`를 사용한다.  
+모듈 코드가 노트북에서 정리된 로직을 반영하지 못한 상태다.
 
-이 불일치는 문서와 코드를 별도로 관리할 때 생기는 전형적인 드리프트(drift)다.  
+노트북에서 모듈로 전환할 때 LLM 참조를 함께 갱신하지 않아 생긴 드리프트다.  
 운영 환경에서 이런 불일치는 온보딩 혼란이나 잘못된 API 키 설정으로 이어진다.  
-LLM 교체 작업이라면 코드와 문서를 같은 커밋에 함께 반영하는 게 맞다.
+노트북과 모듈 코드를 같은 커밋에 동기화하는 게 맞다.
 
 ### 선형 파이프라인의 한계
 

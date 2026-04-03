@@ -52,7 +52,7 @@ project-retrospect:
     title: "PPT를 강의 영상으로 바꾸는 AI 에이전트를 만든 과정 — LangGraph 선형 파이프라인과 설계 판단"
     repo: "dorec9/AI-Lecture-Agent"
     sha: "3d3e3b10f640d7ef6d081b128f25e62d0236bb75"
-    keywords: [LangGraph, Gemini, GoogleCloudTTS, MoviePy, Gradio, AI에이전트, 멀티모달, 강의자동화]
+    keywords: [LangGraph, GPT-4o-mini, OpenAI-TTS, MoviePy, Gradio, AI에이전트, 멀티모달, 강의자동화]
   - slug: "randi-rd-agent-retrospect"
     date: "2026-04-03"
     title: "국가R&D 공고 자동화 에이전트를 만든 과정 — 유사 RFP 탐색·발표 스크립트 생성과 7컨테이너 배포 구성"
