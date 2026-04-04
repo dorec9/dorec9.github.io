@@ -39,6 +39,10 @@ trend-research:
     date: "2026-04-03"
     title: "로우코드·노코드 플랫폼 도입 현황 — 시장 수치와 기업이 마주하는 거버넌스 과제"
     keywords: [로우코드, 노코드, 시티즌개발, 섀도우IT, 거버넌스, IT기획]
+  - slug: "cloud-cost-finops-ai-spend-2026"
+    date: "2026-04-04"
+    title: "2026 클라우드 비용 최적화 트렌드 — FinOps 도입 현황과 AI 비용 관리 과제"
+    keywords: [클라우드비용, FinOps, AI비용관리, 클라우드최적화, IT기획]
 
 business-economy:
   - slug: "global-supply-chain-tariff-war-korea-strategy"
