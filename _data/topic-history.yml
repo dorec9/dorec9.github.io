@@ -11,6 +11,10 @@ planning-insight:
     date: "2026-04-03"
     title: "IT 프로젝트 이해관계자 관리 실무 — Power-Interest Grid와 RACI로 정리하는 법"
     keywords: [이해관계자관리, Power-Interest Grid, RACI, 프로젝트관리, IT기획, PMBOK]
+  - slug: "it-project-risk-register-guide"
+    date: "2026-04-04"
+    title: "IT 프로젝트 리스크 관리 실무 — 리스크 레지스터 작성법과 대응 전략 수립"
+    keywords: [리스크관리, 리스크레지스터, ISO31000, PMBOK, IT기획, 프로젝트관리]
 
 data-statistics:
   - slug: "ab-test-sample-size-mistakes"
