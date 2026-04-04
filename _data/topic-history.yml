@@ -57,6 +57,10 @@ business-economy:
     date: "2026-04-03"
     title: "2026년 벤처 투자 동향 — AI 집중·양극화 심화, 수치로 읽는 한국과 글로벌 VC 시장"
     keywords: [벤처투자, VC, AI투자, 스타트업, 양극화, 한국VC]
+  - slug: "esg-disclosure-ifrs-s1-s2-korea"
+    date: "2026-04-04"
+    title: "ESG 공시 의무화가 다가온다 — IFRS S1·S2 기준과 한국 기업의 준비 현황"
+    keywords: [ESG, IFRS S1, IFRS S2, ISSB, ESG공시, 지속가능성공시, 한국기업]
 
 project-retrospect:
   - slug: "ai-interview-agent-retrospect"
