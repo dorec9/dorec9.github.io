@@ -15,6 +15,10 @@ planning-insight:
     date: "2026-04-04"
     title: "IT 프로젝트 리스크 관리 실무 — 리스크 레지스터 작성법과 대응 전략 수립"
     keywords: [리스크관리, 리스크레지스터, ISO31000, PMBOK, IT기획, 프로젝트관리]
+  - slug: "weighted-decision-matrix-it-investment"
+    date: "2026-04-05"
+    title: "가중치 의사결정 매트릭스로 IT 투자 선택하기 — 5단계 실무 가이드"
+    keywords: [의사결정매트릭스, WADM, MCDA, IT투자, 가중치평가, IT기획]
 
 data-statistics:
   - slug: "funnel-analysis-conversion-dropoff"
