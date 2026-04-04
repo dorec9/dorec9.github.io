@@ -17,6 +17,10 @@ planning-insight:
     keywords: [리스크관리, 리스크레지스터, ISO31000, PMBOK, IT기획, 프로젝트관리]
 
 data-statistics:
+  - slug: "funnel-analysis-conversion-dropoff"
+    date: "2026-04-04"
+    title: "퍼널 분석 실무 — 단계별 전환율 계산과 이탈 구간 찾는 법"
+    keywords: [퍼널분석, 전환율, 이탈률, AARRR, CRO, 데이터분석]
   - slug: "ab-test-sample-size-mistakes"
     date: "2026-04-02"
     title: "A/B테스트 표본 크기 설계 — 실무에서 자주 틀리는 5가지와 올바른 계산법"
