@@ -45,6 +45,10 @@ trend-research:
     keywords: [클라우드비용, FinOps, AI비용관리, 클라우드최적화, IT기획]
 
 business-economy:
+  - slug: "platform-business-model-revenue-network-effects"
+    date: "2026-04-04"
+    title: "플랫폼 비즈니스 모델의 수익 구조 — 5가지 과금 방식과 네트워크 효과의 작동 원리"
+    keywords: [플랫폼비즈니스, 수익모델, 네트워크효과, 테이크레이트, 경영분석]
   - slug: "global-supply-chain-tariff-war-korea-strategy"
     date: "2026-04-02"
     title: "관세 전쟁 속 글로벌 공급망 재편 — 수치로 읽는 지형 변화와 한국 기업 대응"
