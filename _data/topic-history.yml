@@ -73,6 +73,10 @@ business-economy:
     date: "2026-04-04"
     title: "ESG 공시 의무화가 다가온다 — IFRS S1·S2 기준과 한국 기업의 준비 현황"
     keywords: [ESG, IFRS S1, IFRS S2, ISSB, ESG공시, 지속가능성공시, 한국기업]
+  - slug: "tam-sam-som-market-sizing-methodology"
+    date: "2026-04-05"
+    title: "TAM·SAM·SOM으로 시장 규모 추정하기 — Top-down과 Bottom-up 결합법"
+    keywords: [TAM, SAM, SOM, 시장규모, 사업계획서, IR, 경영분석]
 
 project-retrospect:
   - slug: "ai-interview-agent-retrospect"
