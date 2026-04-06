@@ -89,6 +89,10 @@ business-economy:
     date: "2026-04-05"
     title: "TAM·SAM·SOM으로 시장 규모 추정하기 — Top-down과 Bottom-up 결합법"
     keywords: [TAM, SAM, SOM, 시장규모, 사업계획서, IR, 경영분석]
+  - slug: "competitive-strategy-porter-five-forces-3c"
+    date: "2026-04-06"
+    title: "경쟁 분석 프레임워크 실무 — Porter 5 Forces와 3C 분석의 조합 활용법"
+    keywords: [경쟁분석, Porter5Forces, 3C분석, 경쟁전략, 경영기획, 산업분석]
 
 project-retrospect:
   - slug: "ai-interview-agent-retrospect"
