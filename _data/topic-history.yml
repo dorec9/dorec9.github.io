@@ -41,6 +41,10 @@ data-statistics:
     date: "2026-04-05"
     title: "상관관계를 인과관계로 착각하는 순간 — 교란변수와 3가지 검증 조건"
     keywords: [상관관계, 인과관계, 교란변수, 통계분석, 데이터분석, 인과추론]
+  - slug: "data-visualization-chart-selection-misleading"
+    date: "2026-04-06"
+    title: "데이터 시각화 원칙 — 차트 선택 기준과 흔한 왜곡 패턴 5가지"
+    keywords: [데이터시각화, 차트선택, 왜곡차트, 데이터분석, 대시보드]
 
 trend-research:
   - slug: "agentic-ai-enterprise-adoption-2026"
