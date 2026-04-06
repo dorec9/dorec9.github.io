@@ -115,6 +115,12 @@ project-retrospect:
     repo: "dorec9/Randi_RD-agent"
     sha: "7e5f629"
     keywords: [FastAPI, ChromaDB, LangGraph, Gemini, Docker, RAG, 국가RD, 기업마당, multilingual-e5-base, Spring Boot]
+  - slug: "kt-library-retrospect"
+    date: "2026-04-06"
+    title: "KT AivleSchool 도서 관리 웹 서비스 — 설계 판단과 회고"
+    keywords: [SpringBoot, React, JPA, H2, AI이미지생성, 팀프로젝트]
+    repo: "dorec9/kt_library"
+    sha: "8d3c603"
 
 harness-engineering:
   - slug: "ubuntu-ai-coding-environment-setup"

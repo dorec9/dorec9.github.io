@@ -10,6 +10,11 @@ repos:
     post_slug: "ai-lecture-agent-retrospect"
     status: "published"
   kt_library:
+    last_sha: "8d3c603"
+    last_post_date: "2026-04-06"
+    post_slug: "kt-library-retrospect"
+    status: "published"
+  teamseem:
     last_sha: null
     last_post_date: null
     post_slug: null
