@@ -63,6 +63,10 @@ trend-research:
     date: "2026-04-05"
     title: "2026 AI 규제 전환기 — EU AI Act와 한국 AI 기본법, 기업이 대비할 4가지"
     keywords: [AI규제, EU AI Act, AI기본법, AI거버넌스, 고위험AI, 컴플라이언스]
+  - slug: "data-governance-dama-dmbok-ai-quality"
+    date: "2026-04-06"
+    title: "2026 데이터 거버넌스 트렌드 — DAMA-DMBOK 프레임워크와 AI 시대의 데이터 품질 과제"
+    keywords: [데이터거버넌스, DAMA-DMBOK, 데이터품질, 메타데이터, AI데이터관리]
 
 business-economy:
   - slug: "platform-business-model-revenue-network-effects"
