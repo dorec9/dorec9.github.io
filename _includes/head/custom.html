@@ -17,3 +17,32 @@
 {% if page.chart %}
 <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"></script>
 {% endif %}
+
+{% if jekyll.environment == "production" %}
+<!-- A/B 실험: 변형 배정 (첫 페인트 전에 확정해 깜빡임 방지) -->
+<script>
+  (function() {
+    var v = 'A';
+    try {
+      v = localStorage.getItem('ab_exp1_variant');
+      if (v !== 'A' && v !== 'B') {
+        v = Math.random() < 0.5 ? 'A' : 'B';
+        localStorage.setItem('ab_exp1_variant', v);
+      }
+    } catch (e) { v = 'A'; }
+    window.abVariant = v;
+    document.documentElement.setAttribute('data-ab-exp1', v);
+  })();
+</script>
+
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q0E5NGW6L6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-Q0E5NGW6L6', {
+    user_properties: { ab_exp1: window.abVariant }
+  });
+</script>
+{% endif %}

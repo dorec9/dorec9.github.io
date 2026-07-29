@@ -154,6 +154,19 @@
     });
   }
 
+  // === A/B 실험: 목록→글 클릭 측정 ===
+  function initAbClickTracking() {
+    if (typeof window.gtag !== 'function') return;
+    document.querySelectorAll('.archive__item-title a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        window.gtag('event', 'list_post_click', {
+          post_url: link.getAttribute('href') || '',
+          ab_exp1: window.abVariant || 'unknown'
+        });
+      });
+    });
+  }
+
   // === 초기화 ===
   document.addEventListener('DOMContentLoaded', function() {
     initProgressBar();
@@ -162,5 +175,6 @@
     initLightbox();
     initSearchShortcut();
     initEscClose();
+    initAbClickTracking();
   });
 })();

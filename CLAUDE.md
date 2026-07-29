@@ -52,6 +52,13 @@ bundle exec jekyll serve   # http://localhost:4000
 - 구 방식(리눅스 tmux + REPL cron, 하루 4개)은 2026-07 윈도우 이전과 함께 폐기
 - 수동: harness-engineering (/write-post 사용)
 
+## A/B Experiment
+- exp1 (2026-07-30 시작): 홈/목록의 글 요약(excerpt) 표시(A) vs 숨김(B)
+- 배정: localStorage `ab_exp1_variant` 50/50 → `html[data-ab-exp1]` 속성 (head/custom.html)
+- 측정: GA4 `G-Q0E5NGW6L6` — user property `ab_exp1`, 이벤트 `list_post_click` (custom.js)
+- 지표: 목록→글 클릭률
+- YOU MUST NOT: 실험 종료 전 목록 UI·excerpt·실험 코드를 변경하지 않는다
+
 ## Data Files
 - `_data/topic-history.yml` — 전체 카테고리 주제 발행 이력 (중복 방지용)
 - `_data/repo-tracker.yml` — GitHub 레포 분석 상태 추적

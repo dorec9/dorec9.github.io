@@ -266,3 +266,11 @@ figure.highlight:hover .code-copy-btn {
     scroll-behavior: auto !important;
   }
 }
+
+// ===========================================
+// A/B 실험 1: 변형 B는 목록 요약(excerpt) 숨김
+// 배정은 head/custom.html, 측정은 custom.js — 실험 종료 전 수정 금지
+// ===========================================
+html[data-ab-exp1="B"] .archive__item-excerpt {
+  display: none;
+}
