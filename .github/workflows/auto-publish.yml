@@ -1,0 +1,73 @@
+name: auto-publish
+
+# 평일 09:17 KST (00:17 UTC) 하루 1포스트 로테이션
+# 월=repo-retrospect, 화=planning-insight, 수=data-statistics, 목=trend-research, 금=business-economy
+on:
+  schedule:
+    - cron: "17 0 * * 1-5"
+  workflow_dispatch:
+    inputs:
+      task:
+        description: "실행할 작업 (비우면 요일별 자동 선택). 예: auto-publish planning-insight 또는 repo-retrospect"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: auto-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: 체크아웃
+        uses: actions/checkout@v4
+
+      - name: 요일별 작업 선택 (KST 기준)
+        id: pick
+        env:
+          MANUAL_TASK: ${{ inputs.task }}
+        run: |
+          TASK="$MANUAL_TASK"
+          if [ -z "$TASK" ]; then
+            case "$(TZ=Asia/Seoul date +%u)" in
+              1) TASK="repo-retrospect" ;;
+              2) TASK="auto-publish planning-insight" ;;
+              3) TASK="auto-publish data-statistics" ;;
+              4) TASK="auto-publish trend-research" ;;
+              5) TASK="auto-publish business-economy" ;;
+              *) TASK="" ;;
+            esac
+          fi
+          if [ -z "$TASK" ]; then
+            echo "주말 — 실행할 작업 없음"
+          fi
+          echo "prompt=${TASK:+/$TASK}" >> "$GITHUB_OUTPUT"
+
+      - name: Ruby 설치 (Jekyll 빌드 검증용)
+        if: steps.pick.outputs.prompt != ''
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+
+      - name: Git 커밋 identity 설정
+        if: steps.pick.outputs.prompt != ''
+        run: |
+          git config user.name "이도현"
+          git config user.email "Dohyeon22@users.noreply.github.com"
+
+      - name: Claude Code 발행 파이프라인 실행
+        if: steps.pick.outputs.prompt != ''
+        uses: anthropics/claude-code-action@v1
+        env:
+          GH_TOKEN: ${{ github.token }}
+          JEKYLL_GITHUB_TOKEN: ${{ github.token }}
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          prompt: ${{ steps.pick.outputs.prompt }}
+          claude_args: "--max-turns 120 --permission-mode bypassPermissions"

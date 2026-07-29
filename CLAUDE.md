@@ -43,13 +43,13 @@ bundle exec jekyll serve   # http://localhost:4000
 - `/research [키워드]` — 트렌드/데이터 수집
 - `/auto-publish [카테고리slug]` — 자동 발행 파이프라인 (주제 선정→리서치→작성→리뷰→발행)
 - `/repo-retrospect` — GitHub public 레포 분석 후 프로젝트 회고 포스트 자동 발행
-- `/setup-schedules` — 5개 카테고리 cron 스케줄 일괄 등록
 
 ## Auto-Publish Schedule
-- 구 방식(리눅스 tmux + Claude Code REPL 상시 실행 + REPL cron)은 2026-07 윈도우 이전과 함께 폐기
-- 상시 실행이 필요 없는 방식(클라우드 스케줄 에이전트 또는 GitHub Actions)으로 전환 예정 — 확정 전까지 자동 발행 중단 상태
-- 시간표 (전환 시 유지): 일간 (평일): planning-insight(08:23), data-statistics(09:47), trend-research(11:13), business-economy(12:53)
-- 주간 (월요일): project-retrospect(14:37)
+- GitHub Actions cron으로 자동 발행 (`.github/workflows/auto-publish.yml`) — 로컬 상시 실행 불필요
+- 평일 09:17 KST 하루 1포스트 로테이션: 월=repo-retrospect, 화=planning-insight, 수=data-statistics, 목=trend-research, 금=business-economy
+- 수동 실행: Actions 탭에서 workflow_dispatch (task 입력으로 특정 카테고리 지정 가능)
+- 인증: repo secret `CLAUDE_CODE_OAUTH_TOKEN` (`claude setup-token`으로 발급)
+- 구 방식(리눅스 tmux + REPL cron, 하루 4개)은 2026-07 윈도우 이전과 함께 폐기
 - 수동: harness-engineering (/write-post 사용)
 
 ## Data Files
