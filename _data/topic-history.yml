@@ -117,7 +117,7 @@ project-retrospect:
     date: "2026-04-03"
     title: "국가R&D 공고 자동화 에이전트를 만든 과정 — 유사 RFP 탐색·발표 스크립트 생성과 7컨테이너 배포 구성"
     repo: "dorec9/Randi_RD-agent"
-    sha: "7e5f629"
+    sha: "819be988c15a62db4932debbbc3b122df0030eda"
     keywords: [FastAPI, ChromaDB, LangGraph, Gemini, Docker, RAG, 국가RD, 기업마당, multilingual-e5-base, Spring Boot]
   - slug: "kt-library-retrospect"
     date: "2026-04-06"

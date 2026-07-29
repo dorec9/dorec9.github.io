@@ -20,8 +20,8 @@ repos:
     post_slug: null
     status: "not_covered"
   Randi_RD-agent:
-    last_sha: "7e5f629"
-    last_post_date: "2026-04-03"
+    last_sha: "819be988c15a62db4932debbbc3b122df0030eda"
+    last_post_date: "2026-07-30"
     post_slug: "randi-rd-agent-retrospect"
     status: "published"
 
