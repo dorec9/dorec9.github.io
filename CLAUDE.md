@@ -41,7 +41,7 @@ bundle exec jekyll serve   # http://localhost:4000
 - `/review-post [파일]` — 글 품질 검증
 - `/publish [메시지]` — Git commit + push
 - `/research [키워드]` — 트렌드/데이터 수집
-- `/auto-publish [카테고리slug]` — 자동 발행 파이프라인 (주제 선정→리서치→작성→리뷰→발행)
+- `/auto-publish [카테고리slug]` — 자동 발행 파이프라인 (주제 선정→리서치→작성→근거 캡처→리뷰→발행)
 - `/repo-retrospect` — GitHub public 레포 분석 후 프로젝트 회고 포스트 자동 발행
 
 ## Auto-Publish Schedule
