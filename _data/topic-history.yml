@@ -133,3 +133,7 @@ harness-engineering:
   - slug: "claude-code-blog-harness-setup"
     date: "2026-04-02"
     title: "Claude Code 하네스로 블로그 자동화 시스템 구축한 과정"
+  - slug: "blog-automation-github-actions-migration"
+    date: "2026-07-29"
+    title: "컴퓨터를 꺼야 멈추던 자동 발행, GitHub Actions로 부활시킨 과정"
+    keywords: [GitHub-Actions, cron, claude-code-action, OAuth, 자동발행, CI/CD, 윈도우이전]
