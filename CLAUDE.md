@@ -57,6 +57,7 @@ bundle exec jekyll serve   # http://localhost:4000
 - 배정: localStorage `ab_exp1_variant` 50/50 → `html[data-ab-exp1]` 속성 (head/custom.html)
 - 측정: GA4 `G-Q0E5NGW6L6` — user property `ab_exp1`, 이벤트 `list_post_click` (custom.js)
 - 지표: 목록→글 클릭률
+- 본인 트래픽 제외: 기기별 `?ga=off` 1회 방문 (localStorage `ga_disable` → ga-disable 플래그), 해제는 `?ga=on`
 - YOU MUST NOT: 실험 종료 전 목록 UI·excerpt·실험 코드를 변경하지 않는다
 
 ## Data Files

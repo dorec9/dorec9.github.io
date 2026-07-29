@@ -35,6 +35,20 @@
   })();
 </script>
 
+<!-- 본인 트래픽 제외: ?ga=off 1회 방문 시 이 브라우저는 영구 측정 제외 (?ga=on으로 해제) -->
+<script>
+  (function() {
+    try {
+      var q = new URLSearchParams(location.search);
+      if (q.get('ga') === 'off') localStorage.setItem('ga_disable', '1');
+      if (q.get('ga') === 'on') localStorage.removeItem('ga_disable');
+      if (localStorage.getItem('ga_disable') === '1') {
+        window['ga-disable-G-Q0E5NGW6L6'] = true;
+      }
+    } catch (e) {}
+  })();
+</script>
+
 <!-- GA4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q0E5NGW6L6"></script>
 <script>
