@@ -59,7 +59,7 @@ jobs:
         if: steps.pick.outputs.prompt != ''
         run: |
           git config user.name "이도현"
-          git config user.email "Dohyeon22@users.noreply.github.com"
+          git config user.email "227864403+dorec9@users.noreply.github.com"
 
       - name: Claude Code 발행 파이프라인 실행
         if: steps.pick.outputs.prompt != ''
