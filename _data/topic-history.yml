@@ -45,6 +45,10 @@ data-statistics:
     date: "2026-04-06"
     title: "데이터 시각화 원칙 — 차트 선택 기준과 흔한 왜곡 패턴 5가지"
     keywords: [데이터시각화, 차트선택, 왜곡차트, 데이터분석, 대시보드]
+  - slug: "outlier-detection-methods-production"
+    date: "2026-07-29"
+    title: "이상치 탐지 실무 — Z-score·IQR부터 Isolation Forest까지, 방법 선택 기준"
+    keywords: [이상치탐지, Z-score, IQR, IsolationForest, LOF, DBSCAN, 데이터분석]
 
 trend-research:
   - slug: "agentic-ai-enterprise-adoption-2026"
