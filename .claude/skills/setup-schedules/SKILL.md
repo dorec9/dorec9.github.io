@@ -30,5 +30,5 @@ allowed-tools: CronCreate, CronList, CronDelete
 ## 참고
 - 각 job 사이에 1시간 이상 간격 (동시 실행에 의한 git 충돌 방지)
 - 정각(:00, :30) 의도적 회피
-- Claude Code REPL 세션이 실행 중이어야 cron이 동작한다
-- tmux에서 Claude Code를 상시 실행하여 유지한다
+- CronCreate 방식은 Claude Code 세션이 켜져 있는 동안만 동작한다 (구 리눅스 환경에서는 tmux 상시 실행으로 유지했음)
+- 현 Windows 환경은 상시 실행을 하지 않는다 — 클라우드 스케줄/GitHub Actions 전환 전까지 이 스킬을 실행하지 않는다

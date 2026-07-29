@@ -1,0 +1,2 @@
+# 셸 스크립트가 CRLF로 체크아웃되면 bash 실행이 깨진다 — 항상 LF 유지 (Windows 이전 대응)
+*.sh text eol=lf

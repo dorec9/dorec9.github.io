@@ -5,6 +5,12 @@
 - GitHub Pages + Jekyll (minimal-mistakes, air 스킨)
 - 하네스 엔지니어링으로 AI 에이전트 블로그 자동화
 
+## Environment
+- 작업 환경: Windows 11 + Git Bash (2026-07-29 리눅스에서 이전)
+- 훅은 `bash .claude/hooks/*.sh`로 실행 — Git Bash 필수
+- `python3`는 Windows Store 스텁이라 실행 불가 — 스크립트는 `python` 폴백 사용
+- 로컬 Ruby/Jekyll 미설치 — 빌드 검증 훅은 bundler 있을 때만 동작, 최종 빌드는 GitHub Pages가 수행
+
 ## Rules
 - IMPORTANT: 한국어 작성, 실무자 시점, ~다 체
 - IMPORTANT: 과장 표현 금지 — .claude/rules/blacklist.md 참조
@@ -28,6 +34,7 @@
 bundle exec jekyll build
 bundle exec jekyll serve   # http://localhost:4000
 ```
+- 로컬에 Ruby/bundler가 없으면 생략한다 — push 후 GitHub Pages가 원격 빌드
 
 ## Skills
 - `/write-post [주제]` — 블로그 글 생성
@@ -39,9 +46,9 @@ bundle exec jekyll serve   # http://localhost:4000
 - `/setup-schedules` — 5개 카테고리 cron 스케줄 일괄 등록
 
 ## Auto-Publish Schedule
-- tmux에서 Claude Code REPL 상시 실행 필요
-- `/setup-schedules`로 cron 등록 후 자동 발행 시작
-- 일간 (평일): planning-insight(08:23), data-statistics(09:47), trend-research(11:13), business-economy(12:53)
+- 구 방식(리눅스 tmux + Claude Code REPL 상시 실행 + REPL cron)은 2026-07 윈도우 이전과 함께 폐기
+- 상시 실행이 필요 없는 방식(클라우드 스케줄 에이전트 또는 GitHub Actions)으로 전환 예정 — 확정 전까지 자동 발행 중단 상태
+- 시간표 (전환 시 유지): 일간 (평일): planning-insight(08:23), data-statistics(09:47), trend-research(11:13), business-economy(12:53)
 - 주간 (월요일): project-retrospect(14:37)
 - 수동: harness-engineering (/write-post 사용)
 

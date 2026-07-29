@@ -14,7 +14,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/check-frontmatter.sh\""
+            "command": "bash .claude/hooks/check-frontmatter.sh"
           }
         ]
       }
@@ -24,7 +24,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "cd \"$CLAUDE_PROJECT_DIR\" && bundle exec jekyll build > /dev/null 2>&1 || { echo 'Jekyll 빌드 실패 — bundle exec jekyll build로 확인하세요' >&2; exit 2; }"
+            "command": "bash .claude/hooks/build-check.sh"
           }
         ]
       }
