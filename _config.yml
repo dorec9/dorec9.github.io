@@ -6,6 +6,7 @@ description: "경영기획/IT기획 직무 관점의 기술 블로그. 프로젝
 url: ""
 baseurl: ""
 locale: "ko-KR"
+og_image: "/assets/images/og-default.png"
 
 # Theme
 remote_theme: "mmistakes/minimal-mistakes@4.26.2"
