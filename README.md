@@ -4,7 +4,7 @@
 
 이 저장소의 핵심은 글이 아니라 시스템이다. 발행의 대부분을 직접 설계한 **AI 자동 발행 하네스**가 수행한다. 규칙·에이전트·훅으로 품질을 통제하고, GitHub Actions가 평일마다 포스트 1개를 발행한다. 사람의 역할은 시스템을 설계하고, 실패를 규칙으로 승격시키는 것이다.
 
-설계 과정은 [하네스 설계 일지](https://dorec9.github.io/categories/harness-engineering/) 카테고리에 기록한다.
+설계 과정은 [하네스 설계 일지](https://dorec9.github.io/categories/harness-engineering/) 카테고리에, 의사결정 기록은 [JOURNEY.md](JOURNEY.md)에 남긴다.
 
 ## 자동 발행 파이프라인
 

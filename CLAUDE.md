@@ -65,6 +65,10 @@ bundle exec jekyll serve   # http://localhost:4000
 - `_data/repo-tracker.yml` — GitHub 레포 분석 상태 추적
 - `_data/seed-keywords.yml` — 카테고리별 시드 키워드 목록
 
+## Journey Log
+- 주요 의사결정·전환은 `JOURNEY.md`에 기록한다 (상황→선택지→결정 이유→결과)
+- 자동 발행 파이프라인은 이 파일을 수정하지 않는다 — 사람과 대화 세션에서만 갱신
+
 ## Failure Tracking
 - 실패 패턴은 failures/registry.md에 기록
 - 반복되는 실패는 .claude/rules/에 규칙으로 승격
