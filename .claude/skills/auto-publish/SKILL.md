@@ -46,6 +46,10 @@ allowed-tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch, Bash, Skill
    *출처: [{소스명}]({URL}) — YYYY-MM-DD 캡처*
    ```
 6. 캡처는 본문 서술을 뒷받침하는 보조 자료다 — 원문 전체를 대체하지 않는다. 이 단계의 어떤 실패도 발행을 중단시키지 않는다
+7. 결과를 한 줄로 기록한다 (성공: 파일명, 생략: 사유, 실패: 원인):
+   ```bash
+   echo "근거 캡처: {결과 한 줄}" >> "${GITHUB_STEP_SUMMARY:-/dev/null}"
+   ```
 
 ### 5단계: 리뷰
 - `/review-post` 스킬로 품질 검증
