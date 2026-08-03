@@ -15,10 +15,10 @@ repos:
     post_slug: "kt-library-retrospect"
     status: "published"
   teamseem:
-    last_sha: null
-    last_post_date: null
-    post_slug: null
-    status: "not_covered"
+    last_sha: "6b30e3d6dbd12c44df12de333d5aebfe28d27a43"
+    last_post_date: "2026-08-03"
+    post_slug: "teamseem-multi-agent-dashboard-retrospect"
+    status: "published"
   Randi_RD-agent:
     last_sha: "819be988c15a62db4932debbbc3b122df0030eda"
     last_post_date: "2026-07-30"

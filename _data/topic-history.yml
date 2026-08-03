@@ -133,6 +133,12 @@ project-retrospect:
     keywords: [SpringBoot, React, JPA, H2, AI이미지생성, 팀프로젝트]
     repo: "dorec9/kt_library"
     sha: "8d3c603"
+  - slug: "teamseem-multi-agent-dashboard-retrospect"
+    date: "2026-08-03"
+    title: "멀티 에이전트 관제 대시보드 TeamSeem을 만든 과정 — 훅 아키텍처 갈아엎기와 다이어그램 정보 밀도 시행착오"
+    repo: "dorec9/teamseem"
+    sha: "6b30e3d6dbd12c44df12de333d5aebfe28d27a43"
+    keywords: [Next.js, React-Flow, Prisma, SQLite, chokidar, Zustand, Antigravity, 멀티에이전트, 훅아키텍처, 대시보드]
 
 harness-engineering:
   - slug: "ubuntu-ai-coding-environment-setup"
