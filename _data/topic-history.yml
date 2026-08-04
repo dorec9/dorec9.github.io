@@ -23,6 +23,10 @@ planning-insight:
     date: "2026-04-06"
     title: "IT 예산 수립 실무 — CAPEX·OPEX 구분과 제로베이스 예산 편성법"
     keywords: [IT예산, CAPEX, OPEX, 제로베이스예산, 예산편성, IT기획]
+  - slug: "performance-review-absolute-evaluation-bsc-cascading"
+    date: "2026-08-04"
+    title: "성과평가 제도 개편 실무 — 상대평가 폐지 흐름과 BSC 캐스케이딩으로 KPI 정렬하기"
+    keywords: [성과평가, 상대평가, 절대평가, BSC, 균형성과표, KPI캐스케이딩, 경영기획]
 
 data-statistics:
   - slug: "funnel-analysis-conversion-dropoff"
