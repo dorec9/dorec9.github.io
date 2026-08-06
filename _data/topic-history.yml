@@ -79,6 +79,10 @@ trend-research:
     date: "2026-07-30"
     title: "2026 디지털 트윈 × AI 에이전트 결합 트렌드 — 제조업이 AI 인프라로 전환되는 이유"
     keywords: [디지털트윈, AI에이전트, 제조AI, Gartner, 스마트팩토리]
+  - slug: "ai-datacenter-power-crisis-green-it-2026"
+    date: "2026-08-06"
+    title: "2026 AI 데이터센터 전력 위기 — Gartner 26% 증가 전망과 기업의 그린IT 대응"
+    keywords: [AI데이터센터, 전력소비, 그린IT, Gartner, PUE, 재생에너지PPA]
 
 business-economy:
   - slug: "platform-business-model-revenue-network-effects"
