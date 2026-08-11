@@ -27,6 +27,10 @@ planning-insight:
     date: "2026-08-04"
     title: "성과평가 제도 개편 실무 — 상대평가 폐지 흐름과 BSC 캐스케이딩으로 KPI 정렬하기"
     keywords: [성과평가, 상대평가, 절대평가, BSC, 균형성과표, KPI캐스케이딩, 경영기획]
+  - slug: "isp-information-strategy-planning-methodology"
+    date: "2026-08-11"
+    title: "IT 정보전략계획(ISP) 수립 방법론 — 환경분석부터 이행계획까지 3단계 실무 프레임워크"
+    keywords: [ISP, 정보화전략계획, ISMP, IT기획, NIA, 공공IT, 전략수립]
 
 data-statistics:
   - slug: "funnel-analysis-conversion-dropoff"
