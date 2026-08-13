@@ -87,6 +87,10 @@ trend-research:
     date: "2026-08-06"
     title: "2026 AI 데이터센터 전력 위기 — Gartner 26% 증가 전망과 기업의 그린IT 대응"
     keywords: [AI데이터센터, 전력소비, 그린IT, Gartner, PUE, 재생에너지PPA]
+  - slug: "mlops-llmops-agentops-transition"
+    date: "2026-08-13"
+    title: "MLOps에서 AgentOps로 — AI 에이전트 시대에 운영 체계가 갈라지는 이유"
+    keywords: [MLOps, LLMOps, AgentOps, AI에이전트, Gartner, AI관측성]
 
 business-economy:
   - slug: "platform-business-model-revenue-network-effects"
