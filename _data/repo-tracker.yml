@@ -24,6 +24,11 @@ repos:
     last_post_date: "2026-07-30"
     post_slug: "randi-rd-agent-retrospect"
     status: "published"
+  seedagent:
+    last_sha: "e711eb284257724ba4618b8163e925f5e22e8060"
+    last_post_date: "2026-08-17"
+    post_slug: "seedagent-kiwoom-trading-agent-retrospect"
+    status: "published"
 
 excluded:
   - dorec9.github.io

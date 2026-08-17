@@ -155,6 +155,12 @@ project-retrospect:
     repo: "dorec9/teamseem"
     sha: "6b30e3d6dbd12c44df12de333d5aebfe28d27a43"
     keywords: [Next.js, React-Flow, Prisma, SQLite, chokidar, Zustand, Antigravity, 멀티에이전트, 훅아키텍처, 대시보드]
+  - slug: "seedagent-kiwoom-trading-agent-retrospect"
+    date: "2026-08-17"
+    title: "키움증권 자동매매 시스템을 만든 과정 — 32bit/64bit 프로세스 분리와 랜덤 100회 벤치마크"
+    repo: "dorec9/seedagent"
+    sha: "e711eb284257724ba4618b8163e925f5e22e8060"
+    keywords: [Python, FastAPI, PyQt5, 키움증권, OpenAPI+, scikit-learn, PostgreSQL, websockets, 자동매매, 백테스트]
 
 harness-engineering:
   - slug: "ubuntu-ai-coding-environment-setup"
