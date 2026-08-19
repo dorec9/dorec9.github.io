@@ -61,6 +61,10 @@ data-statistics:
     date: "2026-07-29"
     title: "이상치 탐지 실무 — Z-score·IQR부터 Isolation Forest까지, 방법 선택 기준"
     keywords: [이상치탐지, Z-score, IQR, IsolationForest, LOF, DBSCAN, 데이터분석]
+  - slug: "time-series-forecasting-arima-prophet-exponential-smoothing"
+    date: "2026-08-19"
+    title: "시계열 예측 실무 — 지수평활·ARIMA·Prophet 방법 선택 기준과 정확도 비교"
+    keywords: [시계열예측, ARIMA, Prophet, 지수평활, M4경진대회, 데이터분석]
 
 trend-research:
   - slug: "agentic-ai-enterprise-adoption-2026"
