@@ -8,7 +8,7 @@ excerpt: "스프레드시트로 손계산하던 누적합·전월대비·리텐�
 
 월간 보고서는 SQL로 원본만 뽑았다. 누적합과 전월대비 증감은 스프레드시트 수식으로 채웠다. 원본이 바뀌면 수식을 다시 끌어내렸고, 셀 범위가 어긋나 틀린 적도 있다. 이 계산을 쿼리로 옮기며 쓴 윈도우 함수 패턴 5개를 정리한다.
 
-윈도우 함수(window function)는 현재 행뿐 아니라 여러 행에 걸쳐 값을 계산한다([PostgreSQL 공식 문서 — 윈도우 함수](https://www.postgresql.org/docs/current/tutorial-window.html)). `GROUP BY`와 달리 행을 합치지 않고 계산 열만 붙인다. MySQL 8.0.2([MySQL 공식 블로그](https://dev.mysql.com/blog-archive/mysql-8-0-2-introducing-window-functions/), 2017년 기준), SQLite 3.25.0([SQLite 공식 문서](https://sqlite.org/windowfunctions.html), 2018년 기준)에 들어갔다.
+윈도우 함수(window function)는 여러 행에 걸쳐 값을 계산한다([PostgreSQL 공식 문서 — 윈도우 함수](https://www.postgresql.org/docs/current/tutorial-window.html)). `GROUP BY`와 달리 행을 합치지 않고 열만 붙인다. MySQL 8.0.2([MySQL 공식 블로그](https://dev.mysql.com/blog-archive/mysql-8-0-2-introducing-window-functions/), 2017년 기준), SQLite 3.25.0([SQLite 공식 문서](https://sqlite.org/windowfunctions.html), 2018년 기준)에 들어갔다.
 
 ## 패턴 1. 사용자별 최신 1건만 남기기
 
@@ -29,7 +29,7 @@ SUM(revenue) OVER (ORDER BY order_date
   ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) cum_revenue
 ```
 
-프레임(frame)은 한 행을 계산할 때 포함할 행 범위다. `ROWS BETWEEN ...`을 빼면 값이 달라진다. 기본 프레임이 `RANGE UNBOUNDED PRECEDING`이라, 파티션 시작부터 **현재 행의 마지막 동순위(peer)까지** 포함한다([PostgreSQL 공식 문서 — 값 표현식](https://www.postgresql.org/docs/current/sql-expressions.html)). 원시 주문 로그에 쓰면 하루 안 모든 행에 같은 누적값이 찍힌다. 이걸 모르고 한 번 틀린 뒤로 `ROWS`를 명시한다.
+프레임은 계산에 포함할 행 범위다. `ROWS BETWEEN ...`을 빼면 값이 달라진다. 기본 프레임이 `RANGE UNBOUNDED PRECEDING`이라, 파티션 시작부터 **현재 행의 마지막 동순위(peer)까지** 포함한다([PostgreSQL 공식 문서 — 값 표현식](https://www.postgresql.org/docs/current/sql-expressions.html)). 원시 주문 로그에 쓰면 하루 안 모든 행에 같은 누적값이 찍힌다. 한 번 틀린 뒤로 `ROWS`를 명시한다.
 
 ## 패턴 3. 전기대비 증감 — LAG
 
@@ -40,11 +40,11 @@ ROUND((revenue - LAG(revenue) OVER (ORDER BY month))
   * 100.0 / LAG(revenue) OVER (ORDER BY month), 1) mom_pct
 ```
 
-전년동월대비는 `LAG(revenue, 12)`다. 함정은 결측 월이다. 4월이 비면 `LAG(1)`은 3월이 아니라 그 앞 행을 집는다. 날짜가 아니라 행 기준이다. 월 축을 먼저 만들어 빈 달을 채워야 한다.
+전년동월대비는 `LAG(revenue, 12)`다. 함정은 결측 월이다. 4월이 비면 `LAG(1)`은 3월이 아니라 그 앞 행을 집는다. 날짜가 아닌 행 기준이라, 월 축을 먼저 만들어 빈 달을 채운다.
 
 ## 패턴 4. 리텐션 — 코호트 기준일을 행마다 붙인다
 
-코호트(cohort)는 같은 시점에 유입된 사용자 묶음이다. 첫 활동일을 붙이고, 간격을 구하고, 간격별로 집계한다. 첫 단계는 자기조인 대신 `MIN() OVER`로 푼다.
+코호트는 같은 시점에 유입된 사용자 묶음이다. 첫 활동일을 붙이고 간격별로 집계한다. 첫 단계는 자기조인 대신 `MIN() OVER`로 푼다.
 
 ```sql
 WITH base AS (
@@ -61,11 +61,11 @@ FROM base GROUP BY 1, 2;
 
 ## 패턴 5. 전체 대비 구성비
 
-`OVER ()`를 비워두면 파티션이 전체 1개가 된다. `ROUND(revenue * 100.0 / SUM(revenue) OVER (), 1)`로 끝난다. 합계를 따로 구해 조인할 일이 없다.
+`OVER ()`를 비워두면 파티션이 전체 1개가 된다. `ROUND(revenue * 100.0 / SUM(revenue) OVER (), 1)`이면 된다. 합계를 따로 구해 조인할 일이 없다.
 
 ## 자주 막히는 지점 — WHERE에 못 쓴다
 
-윈도우 함수는 `SELECT` 목록과 `ORDER BY`에서만 쓸 수 있다(위 PostgreSQL 문서). `WHERE`가 먼저 실행되기 때문이다. 그래서 패턴 1처럼 서브쿼리로 감싸 걸러야 한다.
+윈도우 함수는 `SELECT` 목록과 `ORDER BY`에서만 쓸 수 있다(위 PostgreSQL 문서). `WHERE`가 먼저 실행되기 때문이다. 패턴 1처럼 서브쿼리로 감싸 걸러야 한다.
 
 Snowflake와 BigQuery에는 `QUALIFY`가 있다. `HAVING`이 `GROUP BY`에 하는 일을 윈도우 함수에 하는 절이다([Snowflake 공식 문서 — QUALIFY](https://docs.snowflake.com/en/sql-reference/constructs/qualify)). 결과는 같은데 중첩이 사라진다. PostgreSQL에는 없다.
 
@@ -77,4 +77,4 @@ QUALIFY ROW_NUMBER() OVER (PARTITION BY user_id
 
 ## 정리
 
-다섯 패턴 모두 `OVER (PARTITION BY ... ORDER BY ... 프레임)` 세 칸을 무엇으로 채울지 정하는 문제였다. 함수를 새로 외울 일이 아니다. 다음 단계는 성능이다. 윈도우 함수는 파티션 단위 정렬을 동반한다. 대시보드용 쿼리는 파티션 키에 인덱스를 건 뒤 실행계획을 확인할 생각이다.
+다섯 패턴 모두 `OVER (PARTITION BY ... ORDER BY ... 프레임)` 세 칸을 무엇으로 채울지 정하는 문제였다. 함수를 새로 외울 일이 아니다. 다음 단계는 성능이다. 윈도우 함수는 파티션 단위 정렬을 동반한다. 대시보드 쿼리는 파티션 키에 인덱스를 건 뒤 실행계획을 볼 생각이다.
