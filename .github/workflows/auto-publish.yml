@@ -74,7 +74,10 @@ jobs:
         if: steps.pick.outputs.prompt != ''
         uses: anthropics/claude-code-action@v1
         env:
-          GH_TOKEN: ${{ github.token }}
+          # REPO_SCAN_TOKEN: private 레포 조회용 PAT (대상 레포에 Contents/Metadata Read).
+          # github.token은 이 레포에만 유효해 다른 레포는 public만 읽힌다 —
+          # private 회고를 하려면 이 secret이 필요하다. 미설정 시 폴백되어 public만 동작한다.
+          GH_TOKEN: ${{ secrets.REPO_SCAN_TOKEN || github.token }}
           JEKYLL_GITHUB_TOKEN: ${{ github.token }}
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
