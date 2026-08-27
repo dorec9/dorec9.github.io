@@ -35,6 +35,10 @@ planning-insight:
     date: "2026-08-18"
     title: "연간 경영계획 수립 프로세스 실무 — Top-down·Bottom-up 결합과 Rolling Forecast 전환"
     keywords: [경영계획수립, TopDown, BottomUp, RollingForecast, FPA, 경영기획]
+  - slug: "rfp-writing-vendor-evaluation-framework"
+    date: "2026-08-25"
+    title: "IT 사업 RFP 작성과 벤더 선정 실무 — 요구사항 상세화부터 100점 배점 설계까지"
+    keywords: [RFP, 제안요청서, 요구사항정의, 벤더선정, 제안평가, 공공SW사업, IT기획]
 
 data-statistics:
   - slug: "funnel-analysis-conversion-dropoff"
@@ -65,6 +69,18 @@ data-statistics:
     date: "2026-08-19"
     title: "시계열 예측 실무 — 지수평활·ARIMA·Prophet 방법 선택 기준과 정확도 비교"
     keywords: [시계열예측, ARIMA, Prophet, 지수평활, M4경진대회, 데이터분석]
+  - slug: "sql-window-function-metric-patterns"
+    date: "2026-08-05"
+    title: "SQL 윈도우 함수로 지표 계산하기 — 누적합·전기대비·리텐션을 쿼리 한 번에 뽑는 5가지 패턴"
+    keywords: [SQL, 윈도우함수, ROW_NUMBER, LAG, 누적합, 리텐션쿼리, 지표계산, 데이터분석]
+  - slug: "survival-analysis-churn-kaplan-meier-cox"
+    date: "2026-08-12"
+    title: "이탈을 시점으로 모델링하기 — Kaplan-Meier 곡선과 Cox 비례위험 적용 기준"
+    keywords: [생존분석, KaplanMeier, Cox비례위험, 이탈예측, censoring, lifelines]
+  - slug: "quasi-experiment-causal-inference-did-psm"
+    date: "2026-08-26"
+    title: "A/B테스트가 막힐 때의 효과 측정 — 이중차분·성향점수매칭·합성통제 선택 기준"
+    keywords: [인과추론, 준실험, 이중차분법, 성향점수매칭, 합성통제법, 데이터분석]
 
 trend-research:
   - slug: "agentic-ai-enterprise-adoption-2026"
@@ -137,6 +153,18 @@ business-economy:
     date: "2026-07-31"
     title: "2026 한국 스타트업 생태계 구조 변화 — 국민성장펀드 200조, IPO 회복, 미국 플립까지"
     keywords: [스타트업생태계, 국민성장펀드, IPO, 벤처회수시장, 플립, 경영분석]
+  - slug: "contribution-margin-breakeven-operating-leverage"
+    date: "2026-08-07"
+    title: "공헌이익과 손익분기점 실무 — 고정비·변동비 분해로 사업 구조 진단하기"
+    keywords: [손익분기점, 공헌이익, 영업레버리지, 안전한계율, 관리회계, 원가구조]
+  - slug: "exchange-rate-sensitivity-export-hedging"
+    date: "2026-08-14"
+    title: "환율 민감도 계산 실무 — 원/달러 10원당 영업이익이 얼마나 움직이는가"
+    keywords: [환율민감도, 환헤지, 순노출, 환산손익, 수출기업, 경영분석]
+  - slug: "ma-valuation-ev-ebitda-dcf-multiple"
+    date: "2026-08-21"
+    title: "M&A 밸류에이션 기초 — EV/EBITDA 11.6배와 7.2배, 배수를 가르는 건 업종이 아니다"
+    keywords: ["M&A", "밸류에이션", "EV/EBITDA", "DCF", "기업가치평가", "기업금융"]
 
 project-retrospect:
   - slug: "ai-interview-agent-retrospect"

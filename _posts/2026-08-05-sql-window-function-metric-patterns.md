@@ -6,7 +6,7 @@ tags: [SQL, 윈도우함수, ROW_NUMBER, LAG, 누적합, 리텐션쿼리, 지표
 excerpt: "스프레드시트로 손계산하던 누적합·전월대비·리텐션을 SQL 쿼리 하나로 옮기는 패턴 5개를 정리한다"
 ---
 
-월간 보고서를 만들 때 SQL로 원본만 뽑고 누적합과 전월대비 증감은 스프레드시트 수식으로 채웠다. 원본이 바뀌면 수식을 다시 끌어내려야 했고, 셀 범위가 어긋나 틀린 적도 있다. 이 계산을 쿼리로 옮기며 쓴 윈도우 함수 패턴 5개를 정리한다.
+월간 보고서는 SQL로 원본만 뽑았다. 누적합과 전월대비 증감은 스프레드시트 수식으로 채웠다. 원본이 바뀌면 수식을 다시 끌어내렸고, 셀 범위가 어긋나 틀린 적도 있다. 이 계산을 쿼리로 옮기며 쓴 윈도우 함수 패턴 5개를 정리한다.
 
 윈도우 함수(window function)는 현재 행뿐 아니라 여러 행에 걸쳐 값을 계산한다([PostgreSQL 공식 문서 — 윈도우 함수](https://www.postgresql.org/docs/current/tutorial-window.html)). `GROUP BY`와 달리 행을 합치지 않고 계산 열만 붙인다. MySQL 8.0.2([MySQL 공식 블로그](https://dev.mysql.com/blog-archive/mysql-8-0-2-introducing-window-functions/), 2017년 기준), SQLite 3.25.0([SQLite 공식 문서](https://sqlite.org/windowfunctions.html), 2018년 기준)에 들어갔다.
 
@@ -29,7 +29,7 @@ SUM(revenue) OVER (ORDER BY order_date
   ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) cum_revenue
 ```
 
-`ROWS BETWEEN ...`을 빼면 값이 달라진다. 기본 프레임이 `RANGE UNBOUNDED PRECEDING`이라, 파티션 시작부터 **현재 행의 마지막 동순위(peer)까지** 포함한다([PostgreSQL 공식 문서 — 값 표현식](https://www.postgresql.org/docs/current/sql-expressions.html)). 원시 주문 로그에 쓰면 하루 안 모든 행에 같은 누적값이 찍힌다. 이걸 모르고 한 번 틀린 뒤로 `ROWS`를 명시한다.
+프레임(frame)은 한 행을 계산할 때 포함할 행 범위다. `ROWS BETWEEN ...`을 빼면 값이 달라진다. 기본 프레임이 `RANGE UNBOUNDED PRECEDING`이라, 파티션 시작부터 **현재 행의 마지막 동순위(peer)까지** 포함한다([PostgreSQL 공식 문서 — 값 표현식](https://www.postgresql.org/docs/current/sql-expressions.html)). 원시 주문 로그에 쓰면 하루 안 모든 행에 같은 누적값이 찍힌다. 이걸 모르고 한 번 틀린 뒤로 `ROWS`를 명시한다.
 
 ## 패턴 3. 전기대비 증감 — LAG
 
@@ -44,7 +44,7 @@ ROUND((revenue - LAG(revenue) OVER (ORDER BY month))
 
 ## 패턴 4. 리텐션 — 코호트 기준일을 행마다 붙인다
 
-첫 활동일을 붙이고, 간격을 구하고, 간격별로 집계한다. 첫 단계에 자기조인 대신 `MIN() OVER`를 쓴다.
+코호트(cohort)는 같은 시점에 유입된 사용자 묶음이다. 첫 활동일을 붙이고, 간격을 구하고, 간격별로 집계한다. 첫 단계는 자기조인 대신 `MIN() OVER`로 푼다.
 
 ```sql
 WITH base AS (
@@ -57,7 +57,7 @@ SELECT cohort_date,
 FROM base GROUP BY 1, 2;
 ```
 
-`COUNT(DISTINCT user_id)`가 중요하다. 리텐션은 사용자 단위 지표라 같은 날 여러 번 접속해도 1명이다.
+리텐션은 사용자 단위 지표다. 같은 날 여러 번 접속해도 1명이라 `COUNT(DISTINCT user_id)`를 쓴다.
 
 ## 패턴 5. 전체 대비 구성비
 
