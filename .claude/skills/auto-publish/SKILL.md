@@ -18,6 +18,7 @@ allowed-tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch, Bash, Skill
 3. 기존 발행된 slug/title/keywords와 겹치지 않는 시드 키워드 1개를 선택한다
 4. WebSearch로 선택한 키워드의 최신 동향을 파악한다
 5. 구체적이고 겹치지 않는 포스트 주제 1개를 확정한다
+6. 시드 키워드가 전부 기존 발행과 겹치면: 최신 동향에서 새 키워드 1개를 발굴해 `_data/seed-keywords.yml`의 해당 카테고리에 추가하고 그 키워드로 진행한다. 유사 주제도 관점/깊이를 바꾸면 허용된다(topic-policy.md). **"적합한 주제 없음"은 종료 사유가 아니다**
 
 ### 2단계: 리서치
 - 확정된 주제로 `/research` 스킬 실행
@@ -66,8 +67,8 @@ allowed-tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch, Bash, Skill
   ```
 
 ### 7단계: 발행
-1. `bundle exec jekyll build`로 빌드 검증
-2. 빌드 실패 시 **중단** + `failures/registry.md`에 기록
+1. `bundle exec jekyll build`로 빌드 검증 — 단, `undefined method 'tainted?' for nil` 시그니처의 실패는 알려진 CI 환경 비호환(failures/registry.md 2026-07-31)이므로 **통과로 간주하고 발행을 계속한다**
+2. 그 외 빌드 실패 시 **중단** + `failures/registry.md`에 기록
 3. 빌드 성공 시:
    - `git add _posts/ _data/topic-history.yml assets/images/`
    - `git commit -m "글 발행: [포스트 제목]"`
@@ -79,3 +80,8 @@ allowed-tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch, Bash, Skill
 - 카테고리 간 교차 중복도 방지 (다른 카테고리에서 이미 다룬 주제 피하기)
 - push는 사용자 확인 없이 자동 실행 (빌드 성공 조건만 체크)
 - force push 절대 불가
+
+## 무발행 금지 (필수)
+- 이 파이프라인의 성공 조건은 단 하나: **`_posts/`의 새 포스트가 커밋되어 push되는 것**
+- GitHub Actions 워크플로우가 실행 후 `_posts/` 변경 여부를 검증한다 — 발행 없이 세션을 끝내면 실행이 실패로 표시되고 알림 이슈가 자동 생성된다 (2026-08-07~26 무발행 4회가 success로 위장돼 3주간 미탐지된 사고의 재발 방지)
+- 5단계 리뷰 3회 불합격 등 정당한 사유로 발행이 불가능한 경우에도 조용히 종료하지 않는다: `failures/registry.md`에 사유를 기록하고 **그 기록을 커밋·push한 뒤** 종료한다. 실행은 실패로 표시된다 — 그게 정상이다. 문제는 실패가 아니라 흔적 없는 실패다

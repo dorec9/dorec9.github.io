@@ -14,6 +14,7 @@ on:
 
 permissions:
   contents: write
+  issues: write
 
 concurrency:
   group: auto-publish
@@ -48,11 +49,19 @@ jobs:
           fi
           echo "prompt=${TASK:+/$TASK}" >> "$GITHUB_OUTPUT"
 
+      - name: 발행 전 기준 커밋 기록
+        if: steps.pick.outputs.prompt != ''
+        id: base
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      # Ruby 3.1 고정: Gemfile.lock의 liquid 4.0.3이 Ruby 3.2에서 제거된
+      # Object#tainted?를 호출해 3.3에서는 빌드가 항상 실패했다
+      # (failures/registry.md 2026-07-31). 실제 배포 빌드는 GitHub Pages가 수행.
       - name: Ruby 설치 (Jekyll 빌드 검증용)
         if: steps.pick.outputs.prompt != ''
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.3"
+          ruby-version: "3.1"
           bundler-cache: true
 
       - name: Git 커밋 identity 설정
@@ -74,3 +83,42 @@ jobs:
           bot_id: "227864403"
           prompt: ${{ steps.pick.outputs.prompt }}
           claude_args: "--max-turns 120 --permission-mode bypassPermissions"
+
+      # 무발행 방어: 세션 종료 코드가 아니라 결과물(_posts/ 변경)로 성공을 판정한다.
+      # 2026-08-07~26 사이 무발행 실행 4회가 success로 기록돼 3주간 미탐지된 사고의 재발 방지
+      # (failures/registry.md 2026-08-27 기록 참조)
+      - name: 발행 결과 검증 (무발행 시 실패 처리)
+        if: steps.pick.outputs.prompt != ''
+        env:
+          BASE_SHA: ${{ steps.base.outputs.sha }}
+          PROMPT: ${{ steps.pick.outputs.prompt }}
+        run: |
+          git fetch origin main
+          CHANGED=$(git diff --name-only "$BASE_SHA" origin/main -- _posts/)
+          if [ -n "$CHANGED" ]; then
+            echo "발행 확인:"
+            echo "$CHANGED"
+            { echo "✅ 발행된 포스트:"; echo '```'; echo "$CHANGED"; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          if [ "$PROMPT" = "/repo-retrospect" ]; then
+            echo "::warning::repo-retrospect: 새 포스트 없음 — 분석할 신규/변경 레포가 없었다면 정상"
+            echo "⚠️ repo-retrospect: 새 포스트 없음 (신규/변경 레포 없음이면 정상)" >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          echo "::error::세션은 끝났지만 _posts/에 새 커밋이 없다 — 무발행. 세션 로그에서 중단 지점을 확인할 것"
+          echo "❌ 무발행: _posts/ 변경 없음 ($PROMPT)" >> "$GITHUB_STEP_SUMMARY"
+          exit 1
+
+      - name: 실패 알림 이슈 생성
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PROMPT: ${{ steps.pick.outputs.prompt }}
+        run: |
+          RUN_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          gh issue create \
+            --repo "${{ github.repository }}" \
+            --title "자동 발행 실패: $(TZ=Asia/Seoul date +%F) ${PROMPT:-작업 미정}" \
+            --body "$(printf '자동 발행 실행이 실패했다.\n\n- 작업: %s\n- 실행 로그: %s\n\n무발행(스텝은 성공했지만 _posts/ 변경 없음)이거나 스텝 자체 실패다. 로그에서 중단 지점을 확인할 것.' "${PROMPT:-미정}" "$RUN_URL")" \
+            || echo "::warning::알림 이슈 생성 실패 — 실행 로그로만 확인 가능"

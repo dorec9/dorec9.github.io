@@ -35,3 +35,10 @@
 - 조치: Gemfile.lock·workflow는 건드리지 않고, build-check.sh에 `tainted?' for nil` 오류 시그니처에 한해 exit 0으로 통과시키는 예외를 추가함(다른 모든 빌드 실패는 기존대로 차단). 근본 원인(Gemfile.lock 버전 고정 vs CI Ruby 3.3)의 정식 해결은 여전히 사용자 승인 필요 — 이 조치는 그 전까지 임시 우회용
 
 ## 기타
+
+### 2026-08-27: 무발행 세션이 success로 위장되는 패턴 (누적 4회, 3주 미탐지)
+- 상황: Actions 실행 conclusion은 success인데 저장소에 커밋이 없음. 해당 세션들은 2~4분 만에 종료 (정상 발행은 6~13분 소요)
+- 기대: 발행하지 못했으면 실행이 failure로 표시되고 `failures/registry.md`에 사유가 남아야 함
+- 실제: 8/7(business-economy), 8/21(business-economy), 8/25(planning-insight), 8/26(data-statistics) 4회가 무발행인데 success로 기록. 8/20 이후 발행 0. 별개로 8/14는 인증 오류로 세션이 0.6초 만에 죽어 명시적 failure (JOURNEY.md D6과 동일 시그니처, 일회성)
+- 원인: ① 파이프라인에 실패 경로 정의가 없었다 — 주제 선정 난항(business-economy 시드 10개 중 8개 소진)이나 알려진 tainted? 빌드 실패를 만난 세션이 "중단"을 정상 종료로 처리 ② 워크플로우가 Claude 스텝의 종료 코드만 보고 결과물(_posts/ 변경)을 검증하지 않음 ③ 세션 로그는 보안상 숨겨져(full output hidden) 외부에서 중단 지점 확인 불가
+- 조치: ① auto-publish.yml에 발행 검증 스텝 추가 — 실행 후 `_posts/` diff가 비면 failure 처리 + 알림 이슈 자동 생성 (repo-retrospect는 무발행 허용) ② SKILL.md에 "무발행 금지" 섹션·시드 소진 시 신규 키워드 발굴 규칙 추가 ③ 시드 키워드 4개 카테고리 보충 ④ CI Ruby를 3.3→3.1로 내려 tainted? 오류 원인 제거 (liquid 4.0.3이 Ruby 3.2에서 제거된 메서드 호출 — 2026-07-31 항목 참조)
