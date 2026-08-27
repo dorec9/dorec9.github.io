@@ -6,7 +6,7 @@ tags: ["M&A", "밸류에이션", "EV/EBITDA", "DCF", "기업가치평가", "기�
 excerpt: "글로벌 전략적 M&A 중간 배수는 11.6배, 중견 사모 거래는 7.2배다. 차이는 업종보다 규모에서 나온다"
 ---
 
-Bain이 집계한 2026년 상반기 전략적 M&A의 중간 배수는 EV/EBITDA 11.6배다([Bain & Company M&A 미드이어 리포트 2026](https://www.bain.com/about/media-center/press-releases/2026/global-ma-momentum-builds-in-2026-as-megadeals-surge-but-acquirers-confront-a-new-ai-winners-paradoxbain-company-ma-midyear-report/)). 중견 사모 거래를 집계하는 GF Data의 2025년 중간값은 조정 EBITDA 7.2배다([Valuations Climb Across Midmarket Deals](https://peprofessional.com/2026/05/valuations-climb-across-midmarket-deals-despite-slower-activity/)). 4배수 넘게 벌어진다. 배수 하나 들고 "우리 회사는 몇 배쯤"이라고 말하면 대체로 틀린다. 어떤 밴드를 봐야 하는지, DCF와 어긋날 때 무엇을 의심해야 하는지 정리한다.
+2026년 상반기 전략적 M&A의 중간 배수는 EV/EBITDA 11.6배다([Bain M&A 미드이어 리포트 2026](https://www.bain.com/about/media-center/press-releases/2026/global-ma-momentum-builds-in-2026-as-megadeals-surge-but-acquirers-confront-a-new-ai-winners-paradoxbain-company-ma-midyear-report/)). 중견 사모 거래를 집계하는 GF Data의 2025년 중간값은 조정 EBITDA 7.2배다([Valuations Climb Across Midmarket Deals](https://peprofessional.com/2026/05/valuations-climb-across-midmarket-deals-despite-slower-activity/)). 4배수 넘게 벌어진다. 배수 하나 들고 "우리 회사는 몇 배쯤"이라고 말하면 대체로 틀린다. 어떤 밴드를 봐야 하는지, DCF와 어긋날 때 뭘 의심할지 정리한다.
 
 ---
 
@@ -23,7 +23,7 @@ EV(Enterprise Value, 기업가치)는 시가총액에 순차입금을 더한 값
 | 구분 | EV/EBITDA | 출처 |
 |------|-----------|------|
 | 글로벌 전략적 M&A (2026 상반기) | 11.6배 | [Bain](https://www.bain.com/about/media-center/press-releases/2026/global-ma-momentum-builds-in-2026-as-megadeals-surge-but-acquirers-confront-a-new-ai-winners-paradoxbain-company-ma-midyear-report/) |
-| 상장 인수자의 피인수 기업 (2024~2026) | 9.8배 (25분위 6.4 / 75분위 13.9) | [EDGAR 3-05](https://ctacquisitions.com/guides/ma-multiples-database-edgar-2024-2026/) |
+| 상장 인수자의 피인수 기업 (2024~2026) | 9.8배 (25분위 6.4 / 75분위 13.9) | [EDGAR](https://ctacquisitions.com/guides/ma-multiples-database-edgar-2024-2026/) |
 | PE 중견 딜 (2025, EV 1천만~5억 달러) | 7.2배 | [GF Data](https://peprofessional.com/2026/05/valuations-climb-across-midmarket-deals-despite-slower-activity/) |
 | 제조업 (EV 1천만~5천만 달러) | 6.7배 | [CT Acquisitions](https://ctacquisitions.com/manufacturing-business-valuation-multiples/) |
 | 소프트웨어 M&A 10년 중간값 (622건) | 19.0배 | [Aventis](https://aventis-advisors.com/software-valuation-multiples/) |
@@ -35,11 +35,11 @@ EV(Enterprise Value, 기업가치)는 시가총액에 순차입금을 더한 값
 
 ## 배수를 가르는 1순위는 규모다
 
-GF Data 구간별 평균에서 EBITDA 1천만~2천5백만 달러 플랫폼은 5.9배, 1억~2억5천만 달러는 10.0배다. 업종을 고정해도 EBITDA 1달러당 약 69% 비싸게 팔린다([Valuations Climb Across Midmarket Deals](https://peprofessional.com/2026/05/valuations-climb-across-midmarket-deals-despite-slower-activity/)).
+GF Data 구간별 평균에서 기업가치 1천만~2천5백만 달러 플랫폼은 5.9배, 1억~2억5천만 달러는 10.0배다. 업종을 고정해도 EBITDA 1달러당 약 69% 비싸게 팔린다([Valuations Climb Across Midmarket Deals](https://peprofessional.com/2026/05/valuations-climb-across-midmarket-deals-despite-slower-activity/)).
 
 같은 집계에서 상위 사분위 기업은 중간값 대비 2.5배수 이상 프리미엄을 받았다. 반복 매출 구조는 1.5~2.0배수, 전략적 인수자는 재무적 투자자보다 평균 1.2배수를 더 얹었다. SEC 공시 집계에서도 전략적 인수자가 PE보다 1~2배수 높게 지불했고, 격차는 소프트웨어에서 최대, 에너지에서 최소였다([EDGAR Rule 3-05 데이터베이스](https://ctacquisitions.com/guides/ma-multiples-database-edgar-2024-2026/)).
 
-비상장 할인도 상수가 아니다. Koeplin·Sarin·Shapiro는 비상장 피인수 기업이 유사 상장사 대비 이익 배수 기준 평균 20~30% 낮게 거래된다고 봤다([The Private Company Discount](https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1745-6622.2000.tb00022.x), 2000년 기준). 반면 스페인 대체시장 232개 관측치를 비교한 연구는 할인이 확인되지 않았고 일부 지표에서는 프리미엄이 나왔다([Annals of Finance](https://link.springer.com/article/10.1007/s10436-022-00420-z), 2022년 기준). 상장사 밴드를 비상장 회사에 그대로 붙이는 건 근거가 약하다.
+비상장 할인도 상수가 아니다. Koeplin·Sarin·Shapiro는 비상장 피인수 기업이 유사 상장사 대비 이익 배수 기준 평균 20~30% 낮게 거래된다고 봤다([The Private Company Discount](https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1745-6622.2000.tb00022.x), 2000년 기준). 반면 스페인 대체시장 232개 관측치 연구에서는 할인이 확인되지 않았고 일부 지표는 프리미엄이 나왔다([Annals of Finance](https://link.springer.com/article/10.1007/s10436-022-00420-z), 2022년 기준). 상장사 밴드를 비상장 회사에 그대로 붙이는 건 근거가 약하다.
 
 ---
 
@@ -55,13 +55,13 @@ DCF의 산출물은 숫자 하나가 아니라 밴드다. 배수 밴드와 겹�
 
 ## 두 결과가 갈릴 때 확인 순서 4가지
 
-**1. EBITDA를 정상화했는가.** 오너 급여, 특수관계자 임차료, 일회성 소송비를 조정하지 않으면 분모가 틀린다. 분모가 20% 낮으면 같은 가격이 배수로는 25% 높게 보인다.
+**1. EBITDA를 정상화했는가.** 오너 급여, 특수관계자 임차료, 일회성 소송비를 조정하지 않으면 분모가 틀린다. 분모가 20% 낮으면 같은 가격이 25% 높은 배수로 보인다.
 
-**2. 자본지출을 뺐는가.** EBITDA는 감가상각을 다시 더한 값이라 설비 재투자 부담이 안 보인다. DCF는 잉여현금흐름 단계에서 이걸 뺀다. 제조업 배수가 소프트웨어보다 낮은 이유의 상당 부분이 여기 있다. DCF가 배수보다 낮으면 capex부터 확인한다.
+**2. 자본지출을 뺐는가.** EBITDA는 감가상각을 다시 더한 값이라 설비 재투자 부담이 안 보인다. DCF는 잉여현금흐름 단계에서 이걸 뺀다. 제조업 배수가 소프트웨어보다 낮은 이유의 상당 부분이다. DCF가 배수보다 낮으면 capex부터 본다.
 
 **3. 피어 그룹이 맞는가.** NYU Stern 데이터셋에서 산업재는 흑자 기업만 보면 21.58배, 적자 포함 전체는 33.42배다([산업별 EV 배수 데이터셋](https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/vebitda.html)). 모집단을 모르면 12배수 차이를 잘못 읽는다.
 
-**4. AI 프리미엄이 배수에 있는지 가정에 있는지.** AI 기업은 EBITDA가 적자라 EV/EBITDA가 안 잡히는 경우가 많고, 그래서 매출 배수로 넘어간다. 최근 AI 인수 건의 중간 매출 배수는 13.1배였다([AI Valuation Multiples in 2026](https://aventis-advisors.com/ai-valuation-multiples/)). 이 지점에서 상대가치는 비교가 아니라 서사가 된다. Bain이 2026년 인수자의 과제로 "승자의 역설"을 든 것도 같은 맥락이다. 인수 대금과 AI 전환 투자를 동시에 감당해야 해서 시너지 가정이 두 번 계상되기 쉽다.
+**4. AI 프리미엄이 배수에 있는지 가정에 있는지.** AI 기업은 EBITDA가 적자라 EV/EBITDA가 안 잡히는 경우가 많고, 그래서 매출 배수로 넘어간다. 최근 AI 인수 건의 중간 매출 배수는 13.1배였다([AI Valuation Multiples in 2026](https://aventis-advisors.com/ai-valuation-multiples/)). 이 지점에서 상대가치는 비교가 아니라 서사가 된다. Bain이 2026년 인수자의 과제로 "승자의 역설"을 든 것도 같은 맥락이다. 인수 대금과 AI 전환 투자를 함께 감당해야 해 시너지가 두 번 계상되기 쉽다.
 
 ---
 

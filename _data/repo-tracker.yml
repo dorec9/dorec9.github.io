@@ -30,10 +30,8 @@ repos:
     post_slug: "seedagent-kiwoom-trading-agent-retrospect"
     status: "published"
 
-# 회고 대상에서 영구 제외하는 레포.
-# 여기 이름을 적으면 판단 없이 무조건 건너뛴다 — 개인 사이트, 서버·인프라 운영,
-# dotfiles, 자격증명이 얽힌 레포는 이름을 직접 넣어두는 게 확실하다.
-# (SKILL.md의 제외 기준은 목록에 없는 레포를 걸러내는 2차 방어선이다)
+# 회고 대상에서 영구 제외하는 레포. 여기 이름을 적으면 판단 없이 건너뛴다.
+# 서버·개인 사이트 레포는 회고 자체는 가능하다 — 주소 노출만 막으면 되고,
+# 그건 .claude/rules/blacklist.md의 "공개하지 않는 정보"가 처리한다.
 excluded:
   - dorec9.github.io
-  # TODO: 개인 사이트 레포 이름을 여기 추가할 것
