@@ -6,7 +6,9 @@ tags: ["M&A", "밸류에이션", "EV/EBITDA", "DCF", "기업가치평가", "기�
 excerpt: "글로벌 전략적 M&A 중간 배수는 11.6배, 중견 사모 거래는 7.2배다. 차이는 업종보다 규모에서 나온다"
 ---
 
-2026년 상반기 전략적 M&A의 중간 배수는 EV/EBITDA 11.6배다([Bain M&A 미드이어 리포트 2026](https://www.bain.com/about/media-center/press-releases/2026/global-ma-momentum-builds-in-2026-as-megadeals-surge-but-acquirers-confront-a-new-ai-winners-paradoxbain-company-ma-midyear-report/)). 중견 사모 거래를 집계하는 GF Data의 2025년 중간값은 조정 EBITDA 7.2배다([Valuations Climb Across Midmarket Deals](https://peprofessional.com/2026/05/valuations-climb-across-midmarket-deals-despite-slower-activity/)). 4배수 넘게 벌어진다. 배수 하나 들고 "우리 회사는 몇 배쯤"이라고 말하면 대체로 틀린다. 어떤 밴드를 봐야 하는지, DCF와 어긋날 때 뭘 의심할지 정리한다.
+2026년 상반기 전략적 M&A의 중간 배수는 EV/EBITDA 11.6배다([Bain M&A 미드이어 리포트 2026](https://www.bain.com/about/media-center/press-releases/2026/global-ma-momentum-builds-in-2026-as-megadeals-surge-but-acquirers-confront-a-new-ai-winners-paradoxbain-company-ma-midyear-report/)). 중견 사모 거래를 집계한 GF Data의 2025년 중간값은 다르다. 조정 EBITDA 7.2배다([Valuations Climb Across Midmarket Deals](https://peprofessional.com/2026/05/valuations-climb-across-midmarket-deals-despite-slower-activity/)). 4배수 넘게 벌어진다.
+
+기획 실무에서 인수 검토 자료를 받으면 배수 한 줄만 적혀 있는 경우가 많다. 그 숫자만 들고 "우리 회사는 몇 배쯤"이라고 말하면 대체로 틀린다. 내가 어떤 밴드를 먼저 보고, DCF와 어긋날 때 뭘 의심하는지 확인 순서를 정리한다.
 
 ---
 
