@@ -15,7 +15,8 @@ allowed-tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch, Bash, Skill
    gh api "user/repos?per_page=100&affiliation=owner" --paginate \
      --jq '.[] | {name, description, language, pushed_at, default_branch, visibility, created_at}'
    ```
-   private이 하나도 안 나오면 토큰 권한 부족이다 — 5단계 "권한 부족 시" 항목을 따른다
+   조회 결과가 0건이거나 private이 하나도 안 나오면 토큰 권한 문제일 수 있다 —
+   아래 "조회 결과 기록"을 반드시 수행한다
 2. `_data/repo-tracker.yml`을 읽는다
 3. **회고 대상 제외 기준** — `_data/repo-tracker.yml`의 `excluded` 목록에 있으면 건너뛴다.
    목록에 없어도 아래에 해당하면 제외하고, 제외 사유를 한 줄 남긴다.
@@ -30,7 +31,21 @@ allowed-tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch, Bash, Skill
 4. 다음 우선순위로 대상 레포 1개를 선택한다:
    - a) `status: "not_covered"` — 아직 회고하지 않은 레포 (우선)
    - b) `status: "published"` + GitHub의 최신 커밋 SHA가 `last_sha`와 다른 레포 (변경 발생)
-5. 선택 대상이 없으면 "이번 주 회고 대상 없음"을 출력하고 **종료**
+5. **조회 결과 기록 (필수)** — 회고를 하든 안 하든 무슨 일이 있었는지 흔적을 남긴다.
+   월요일은 무발행이 정상일 수 있어 워크플로우 검증에서 예외 처리되므로,
+   이 기록이 없으면 "신규 레포 없음"과 "토큰이 죽어 아무것도 못 봄"이 구분되지 않는다:
+   ```bash
+   {
+     echo "## repo-retrospect 조회 결과"
+     echo "- 조회된 레포: ${TOTAL}개 (public ${PUB} / private ${PRIV})"
+     echo "- 제외: ${EXCLUDED}개"
+     echo "- 회고 대상: ${TARGET:-없음}"
+     [ "$PRIV" -eq 0 ] && echo "- ⚠️ private 레포 0건 — REPO_SCAN_TOKEN 미설정/만료 가능성"
+   } >> "${GITHUB_STEP_SUMMARY:-/dev/stdout}"
+   ```
+6. 선택 대상이 없으면 위 기록을 남긴 뒤 "이번 주 회고 대상 없음"을 출력하고 **종료**.
+   단 private이 0건으로 나왔다면 정상 종료가 아니다 —
+   `failures/registry.md`에 토큰 문제로 기록하고 그 기록을 커밋·push한다
 
 ### 2단계: 레포 심층 분석
 회고는 프로젝트의 **전체 흐름**을 다룬다. 최근 커밋 몇 개만 보면 끝자락만 쓰게 되므로
