@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="600" viewBox="0 0 1500 600" role="img" aria-labelledby="title desc">
+  <title id="title">데이터·AI 실제 작업 근거 커버</title>
+  <desc id="desc">Randi_RD-agent 검색 평가, wind-power-dacon 풍력발전량 예측 실험, real-code 에이전트 평가 결과를 GitHub에서 확인한 수치로 구성한 커버 이미지</desc>
+
+  <defs>
+    <pattern id="grid" width="38" height="38" patternUnits="userSpaceOnUse">
+      <path d="M 38 0 L 0 0 0 38" fill="none" stroke="#2563EB" stroke-opacity="0.045" stroke-width="1"/>
+    </pattern>
+    <style>
+      .sans { font-family: Pretendard, "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", Arial, sans-serif; }
+      .mono { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; }
+      .navy { fill: #0F172A; }
+      .slate { fill: #334155; }
+      .muted { fill: #64748B; }
+      .faint { fill: #94A3B8; }
+      .blue { fill: #2563EB; }
+      .label { font-size: 14px; font-weight: 500; letter-spacing: 1.6px; }
+      .title { font-size: 38px; font-weight: 500; letter-spacing: -1.2px; }
+      .repo { font-size: 13px; font-weight: 500; letter-spacing: 1.2px; }
+      .section { font-size: 24px; font-weight: 500; letter-spacing: -0.5px; }
+      .meta { font-size: 14px; font-weight: 400; }
+      .metric { font-size: 15px; font-weight: 500; }
+      .small { font-size: 13px; font-weight: 400; }
+      .tiny { font-size: 12px; font-weight: 500; letter-spacing: 0.8px; }
+    </style>
+  </defs>
+
+  <rect width="1500" height="600" fill="#FFFFFF"/>
+  <rect width="1500" height="600" fill="url(#grid)"/>
+  <rect width="10" height="600" fill="#2563EB"/>
+
+  <text x="70" y="62" class="sans label blue">데이터 · AI · 실험</text>
+  <text x="70" y="112" class="sans title navy">직접 만들고, 실험하고, 확인한 결과</text>
+  <text x="1430" y="105" text-anchor="end" class="sans tiny muted">GITHUB에서 확인한 기록 · DOREC9</text>
+  <line x1="70" y1="145" x2="1430" y2="145" stroke="#E2E8F0" stroke-width="1"/>
+
+  <line x1="610" y1="145" x2="610" y2="550" stroke="#E2E8F0" stroke-width="1"/>
+  <line x1="1050" y1="145" x2="1050" y2="550" stroke="#E2E8F0" stroke-width="1"/>
+
+  <!-- Randi_RD-agent -->
+  <g transform="translate(70 185)">
+    <text x="0" y="0" class="sans repo muted">RANDI_RD-AGENT</text>
+    <text x="0" y="38" class="sans section navy">검색 품질 평가</text>
+    <text x="0" y="66" class="sans meta muted">고정 홀드아웃 질의 30개 · 문서 단위 평가</text>
+
+    <text x="0" y="127" class="sans metric slate">Success@1</text>
+    <rect x="105" y="105" width="280" height="9" fill="#EEF2F7"/>
+    <rect x="105" y="105" width="159" height="9" fill="#94A3B8"/>
+    <rect x="105" y="122" width="280" height="9" fill="#EEF2F7"/>
+    <rect x="105" y="122" width="215" height="9" fill="#2563EB"/>
+    <text x="455" y="127" text-anchor="end" class="sans metric slate">76.7%</text>
+
+    <text x="0" y="205" class="sans metric slate">MRR</text>
+    <rect x="105" y="183" width="280" height="9" fill="#EEF2F7"/>
+    <rect x="105" y="183" width="187" height="9" fill="#94A3B8"/>
+    <rect x="105" y="200" width="280" height="9" fill="#EEF2F7"/>
+    <rect x="105" y="200" width="245" height="9" fill="#2563EB"/>
+    <text x="455" y="205" text-anchor="end" class="sans metric slate">0.8733</text>
+
+    <rect x="0" y="253" width="20" height="5" fill="#94A3B8"/>
+    <text x="30" y="260" class="sans small muted">개선 전</text>
+    <rect x="100" y="253" width="20" height="5" fill="#2563EB"/>
+    <text x="130" y="260" class="sans small muted">개선 후</text>
+
+    <text x="0" y="315" class="sans small muted">Success@1  56.7% → 76.7%</text>
+    <text x="0" y="340" class="sans small muted">MRR  0.6664 → 0.8733</text>
+  </g>
+
+  <!-- wind-power-dacon -->
+  <g transform="translate(650 185)">
+    <text x="0" y="0" class="sans repo muted">WIND-POWER-DACON</text>
+    <text x="0" y="38" class="sans section navy">풍력발전량 예측 실험</text>
+    <text x="0" y="66" class="sans meta muted">DACON Public 종합 점수 · 동결된 제출 기록</text>
+
+    <line x1="0" y1="280" x2="360" y2="280" stroke="#E2E8F0" stroke-width="1"/>
+    <line x1="0" y1="205" x2="360" y2="205" stroke="#EEF2F7" stroke-width="1"/>
+    <polyline points="24,257 177,225 338,122" fill="none" stroke="#2563EB" stroke-width="4"/>
+    <circle cx="24" cy="257" r="7" fill="#94A3B8"/>
+    <circle cx="177" cy="225" r="7" fill="#64748B"/>
+    <circle cx="338" cy="122" r="9" fill="#2563EB"/>
+    <text x="24" y="310" text-anchor="middle" class="sans small muted">V6</text>
+    <text x="177" y="310" text-anchor="middle" class="sans small muted">V19-2</text>
+    <text x="338" y="310" text-anchor="middle" class="sans small muted">V20-3</text>
+    <text x="338" y="98" text-anchor="end" class="mono metric navy">0.6459647959</text>
+    <text x="0" y="352" class="mono small muted">V6      0.6451045649</text>
+    <text x="0" y="377" class="mono small muted">V19-2   0.6453186488</text>
+    <text x="0" y="402" class="mono small blue">V20-3   0.6459647959</text>
+  </g>
+
+  <!-- real-code -->
+  <g transform="translate(1090 185)">
+    <text x="0" y="0" class="sans repo muted">REAL-CODE</text>
+    <text x="0" y="38" class="sans section navy">에이전트 평가</text>
+    <text x="0" y="66" class="sans meta muted">code-reviewer · 동일한 평가 기준</text>
+
+    <text x="0" y="154" class="sans navy" font-size="40" font-weight="500">74.0</text>
+    <text x="102" y="151" class="sans muted" font-size="27">→</text>
+    <text x="152" y="154" class="sans blue" font-size="56" font-weight="500" letter-spacing="-2">96.1</text>
+
+    <rect x="0" y="198" width="330" height="122" fill="#F8FAFC"/>
+    <rect x="0" y="198" width="4" height="122" fill="#2563EB"/>
+    <text x="22" y="232" class="sans small slate">기준 점수: 96.1</text>
+    <text x="22" y="264" class="sans small slate">커밋: 61c94b4</text>
+    <text x="22" y="296" class="sans small slate">데이터셋 버전: 1</text>
+
+    <text x="0" y="370" class="sans small muted">동일한 평가 데이터로 다시 측정</text>
+    <text x="0" y="397" class="sans small muted">baseline.json에서 확인</text>
+  </g>
+
+  <text x="1430" y="576" text-anchor="end" class="sans tiny faint">출처 · 기본 브랜치 · 2026</text>
+</svg>
