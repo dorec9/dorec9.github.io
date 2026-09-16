@@ -100,10 +100,28 @@ def main() -> int:
     if re.search(r"\[(여기|링크)\]\(", body):
         errors.append("서술적이지 않은 링크 텍스트 사용")
 
+    visual_patterns = {
+        "Mermaid": r"```mermaid\s*\n",
+        "Chart.js": r"<canvas\b",
+        "이미지": r"!\[[^\]]+\]\([^)]+\)",
+        "표": r"(?m)^\|.+\|\s*\n\|(?:\s*:?-{3,}:?\s*\|)+",
+    }
+    visuals = [name for name, pattern in visual_patterns.items() if re.search(pattern, body)]
+    if not visuals:
+        errors.append("주제에 맞는 시각 자료가 없음: Mermaid, Chart.js, 이미지, 표 중 하나 필요")
+
+    if "```mermaid" in body and fields.get("mermaid") != "true":
+        errors.append("Mermaid 사용 시 front matter에 mermaid: true가 필요함")
+    if "<canvas" in body and fields.get("chart") != "true":
+        errors.append("Chart.js 사용 시 front matter에 chart: true가 필요함")
+
     if errors:
         return fail(errors)
 
-    print(f"OK: {path} ({len(visible_text.strip())}자, 외부 출처 {len(links)}개)")
+    print(
+        f"OK: {path} ({len(visible_text.strip())}자, "
+        f"외부 출처 {len(links)}개, 시각 자료 {', '.join(visuals)})"
+    )
     return 0
 
 
