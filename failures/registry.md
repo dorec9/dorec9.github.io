@@ -42,3 +42,10 @@
 - 실제: 8/7(business-economy), 8/21(business-economy), 8/25(planning-insight), 8/26(data-statistics) 4회가 무발행인데 success로 기록. 8/20 이후 발행 0. 별개로 8/14는 인증 오류로 세션이 0.6초 만에 죽어 명시적 failure (JOURNEY.md D6과 동일 시그니처, 일회성)
 - 원인: ① 파이프라인에 실패 경로 정의가 없었다 — 주제 선정 난항(business-economy 시드 10개 중 8개 소진)이나 알려진 tainted? 빌드 실패를 만난 세션이 "중단"을 정상 종료로 처리 ② 워크플로우가 Claude 스텝의 종료 코드만 보고 결과물(_posts/ 변경)을 검증하지 않음 ③ 세션 로그는 보안상 숨겨져(full output hidden) 외부에서 중단 지점 확인 불가
 - 조치: ① auto-publish.yml에 발행 검증 스텝 추가 — 실행 후 `_posts/` diff가 비면 failure 처리 + 알림 이슈 자동 생성 (repo-retrospect는 무발행 허용) ② SKILL.md에 "무발행 금지" 섹션·시드 소진 시 신규 키워드 발굴 규칙 추가 ③ 시드 키워드 4개 카테고리 보충 ④ CI Ruby를 3.3→3.1로 내려 tainted? 오류 원인 제거 (liquid 4.0.3이 Ruby 3.2에서 제거된 메서드 호출 — 2026-07-31 항목 참조)
+
+### 2026-09-16: 구독 변경 뒤에도 Claude 자동화를 유지해 15회 연속 실패
+- 상황: 사용자는 Claude 사용을 중단하고 ChatGPT Pro를 사용 중이었으나 예약 워크플로는 계속 Claude OAuth 토큰으로 실행됨
+- 기대: 사용 중인 AI 서비스와 자동화 실행 주체가 일치하고, 인증 실패 시 구체적인 원인이 보존되어야 함
+- 실제: 2026-08-31부터 09-16까지 15회 연속 failure. Claude 실행은 1턴, 0.3~0.5초, 비용 0, `is_error:true`로 끝났고 상세 오류는 로그에 남지 않음
+- 원인: ChatGPT Pro는 Claude OAuth 인증을 대체하지 않는다. 구독 변경 후 자동화 의존성과 secret을 함께 전환하지 않았고, 전체 출력도 보존하지 않아 정확한 Claude 응답 코드는 사후 복구할 수 없었음
+- 조치: `claude-code-action` 예약 워크플로 제거, `AGENTS.md` 기반 로컬 Codex 예약 작업으로 전환, 누락 15회 대기열과 포스트 검증 스크립트 추가. 첫 복구 글의 Pages 배포와 실제 URL 노출까지 확인함
