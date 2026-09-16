@@ -83,6 +83,10 @@ data-statistics:
     keywords: [인과추론, 준실험, 이중차분법, 성향점수매칭, 합성통제법, 데이터분석]
 
 trend-research:
+  - slug: "on-device-ai-operations-security"
+    date: "2026-08-27"
+    title: "온디바이스 AI 도입 판단 — NPU 성능보다 먼저 볼 운영·보안 기준"
+    keywords: [온디바이스AI, NPU, AI보안, 단말관리, 로컬추론, 데이터보관]
   - slug: "agentic-ai-enterprise-adoption-2026"
     date: "2026-04-02"
     title: "2026 에이전틱 AI 기업 도입 현황 — 80%가 도입했지만 40%는 실패한다"

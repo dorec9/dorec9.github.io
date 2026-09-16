@@ -1,0 +1,80 @@
+# Claude 자동화 중단 기간의 미발행 대기열.
+# Codex는 pending 중 가장 오래된 항목을 한 번에 하나씩 처리한다.
+- date: "2026-08-27"
+  category: trend-research
+  topic: "온디바이스 AI 도입 판단 — NPU 성능보다 먼저 볼 운영·보안 기준"
+  status: published
+  post: "2026-08-27-on-device-ai-operations-security.md"
+
+- date: "2026-08-28"
+  category: business-economy
+  topic: "구독경제 유닛 이코노믹스 — LTV·CAC·회수기간으로 성장의 질 판별하기"
+  status: pending
+
+- date: "2026-08-31"
+  category: project-retrospect
+  topic: "A_eye 프로젝트 회고"
+  repo: "dorec9/A_eye"
+  status: pending
+
+- date: "2026-09-01"
+  category: planning-insight
+  topic: "전사 변화관리 실무 — ADKAR로 도입률과 저항을 관리하는 방법"
+  status: pending
+
+- date: "2026-09-02"
+  category: data-statistics
+  topic: "지표 대시보드 설계 — North Star Metric과 가드레일 지표 연결하기"
+  status: pending
+
+- date: "2026-09-03"
+  category: trend-research
+  topic: "합성데이터 도입 기준 — 개인정보 보호와 모델 성능 사이의 검증 절차"
+  status: pending
+
+- date: "2026-09-04"
+  category: business-economy
+  topic: "고령화가 산업 구조를 바꾸는 방식 — 노동·의료·주거 수요의 이동"
+  status: pending
+
+- date: "2026-09-07"
+  category: project-retrospect
+  topic: "Data-Factory 프로젝트 회고"
+  repo: "dorec9/Data-Factory"
+  status: pending
+
+- date: "2026-09-08"
+  category: planning-insight
+  topic: "신사업 타당성 검토 — 시장성·수익성·실행가능성 게이트 설계"
+  status: pending
+
+- date: "2026-09-09"
+  category: data-statistics
+  topic: "베이지안 A/B 테스트 실무 — 승리확률과 기대손실로 종료 시점 정하기"
+  status: pending
+
+- date: "2026-09-10"
+  category: trend-research
+  topic: "소버린 AI 전략 — 데이터·모델·컴퓨팅 주권을 분리해 판단하는 법"
+  status: pending
+
+- date: "2026-09-11"
+  category: business-economy
+  topic: "전력 인프라 투자 경제학 — 데이터센터 수요와 계통 병목 읽기"
+  status: pending
+
+- date: "2026-09-14"
+  category: project-retrospect
+  topic: "my-agent 프로젝트 회고"
+  repo: "dorec9/my-agent"
+  status: pending
+
+- date: "2026-09-15"
+  category: planning-insight
+  topic: "OKR과 KPI 연계 운영 — 목표와 상시 성과관리를 한 표에 담는 법"
+  status: pending
+
+- date: "2026-09-16"
+  category: data-statistics
+  topic: "회귀분석 실무 — 예측·설명·인과 목적에 따라 모델을 나누는 기준"
+  status: pending
