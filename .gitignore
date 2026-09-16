@@ -5,4 +5,5 @@ _site/
 vendor/
 Gemfile.lock
 .bundle/
+__pycache__/
 .claude/settings.local.json
