@@ -29,7 +29,7 @@ flowchart LR
 | 목 | 트렌드 리서치 (trend-research) |
 | 금 | 경영·경제 분석 (business-economy) |
 
-실행 주체는 로컬 Codex 예약 작업이다. 저장소의 [AGENTS.md](AGENTS.md)가 조사·작성·검토·발행 절차를 정의한다. Claude 구독 종료 후 작동하지 않던 GitHub Actions 워크플로는 2026-09-16에 제거했다. 로컬 파일을 사용하는 예약 작업이므로 실행 시 PC와 Codex 앱이 켜져 있어야 한다.
+실행 주체는 로컬 Codex 예약 작업이다. 저장소의 [AGENTS.md](AGENTS.md)가 조사·작성·검토·발행 절차를 정의한다. 2026-09-16부터 콘텐츠 발행과 검증을 Codex가 수행한다. 로컬 파일을 사용하는 예약 작업이므로 실행 시 PC와 Codex 앱이 켜져 있어야 한다.
 
 ## 하네스 구조
 
@@ -40,7 +40,7 @@ AGENTS.md                Codex 자동 발행 절차와 안전장치
 _data/
 ├── topic-history.yml   전체 발행 이력 — 카테고리 간 교차 중복까지 차단
 ├── seed-keywords.yml   카테고리별 시드 키워드 로테이션
-├── publish-backlog.yml Claude 중단 기간의 순차 발행 대기열
+├── publish-backlog.yml 순차 발행 대기열
 └── repo-tracker.yml    레포 회고 상태 추적 (커밋 SHA 비교)
 _posts/                 발행된 포스트
 failures/               실패 레지스트리 — 실패가 규칙이 되는 루프
@@ -64,7 +64,7 @@ scripts/validate_post.py 포스트 형식·분량·출처·금지어 검사
 
 - **2026-04** — 리눅스에서 초기 구축. tmux + Claude Code REPL cron으로 하루 4포스트 발행
 - **2026-07** — 윈도우 이전과 함께 GitHub Actions cron으로 전환. 상시 실행 제거, 하루 1포스트 로테이션
-- **2026-09** — Claude 구독 종료로 멈춘 자동화를 ChatGPT Pro 기반 Codex 예약 작업으로 전환. 누락 15회를 순차 대기열로 복구
+- **2026-09** — 자동 발행 실행 주체를 ChatGPT Pro 기반 Codex 예약 작업으로 전환
 
 ## 기술 스택
 
