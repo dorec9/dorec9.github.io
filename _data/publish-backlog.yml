@@ -1,4 +1,4 @@
-# Claude 자동화 중단 기간의 미발행 대기열.
+# 콘텐츠 순차 발행 대기열.
 # Codex는 pending 중 가장 오래된 항목을 한 번에 하나씩 처리한다.
 - date: "2026-08-27"
   category: trend-research
