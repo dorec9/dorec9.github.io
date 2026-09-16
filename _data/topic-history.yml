@@ -125,6 +125,10 @@ trend-research:
     keywords: [SaaS과금, 아웃컴기반과금, 컨섬션기반과금, AI에이전트, Gartner, SaaS거버넌스]
 
 business-economy:
+  - slug: "subscription-ltv-cac-payback"
+    date: "2026-08-28"
+    title: "구독경제 유닛 이코노믹스 — LTV·CAC·회수기간으로 성장의 질 판별하기"
+    keywords: [구독경제, 유닛이코노믹스, LTV, CAC, 회수기간]
   - slug: "platform-business-model-revenue-network-effects"
     date: "2026-04-04"
     title: "플랫폼 비즈니스 모델의 수익 구조 — 5가지 과금 방식과 네트워크 효과의 작동 원리"
