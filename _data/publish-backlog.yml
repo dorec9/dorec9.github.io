@@ -22,7 +22,8 @@
 - date: "2026-09-01"
   category: planning-insight
   topic: "전사 변화관리 실무 — ADKAR로 도입률과 저항을 관리하는 방법"
-  status: pending
+  status: published
+  post: "2026-09-01-adkar-change-adoption-resistance.md"
 
 - date: "2026-09-02"
   category: data-statistics
