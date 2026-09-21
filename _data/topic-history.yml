@@ -45,6 +45,10 @@ planning-insight:
     keywords: [RFP, 제안요청서, 요구사항정의, 벤더선정, 제안평가, 공공SW사업, IT기획]
 
 data-statistics:
+  - slug: "north-star-metric-guardrail-dashboard"
+    date: "2026-09-02"
+    title: "지표 대시보드 설계 — North Star Metric과 가드레일 지표 연결하기"
+    keywords: [NorthStarMetric, 가드레일지표, 대시보드, 입력지표, 제품분석, KPI]
   - slug: "funnel-analysis-conversion-dropoff"
     date: "2026-04-04"
     title: "퍼널 분석 실무 — 단계별 전환율 계산과 이탈 구간 찾는 법"
