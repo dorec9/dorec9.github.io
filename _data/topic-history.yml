@@ -91,6 +91,10 @@ data-statistics:
     keywords: [인과추론, 준실험, 이중차분법, 성향점수매칭, 합성통제법, 데이터분석]
 
 trend-research:
+  - slug: "synthetic-data-privacy-utility-validation"
+    date: "2026-09-03"
+    title: "합성데이터 도입 기준 — 개인정보 보호와 모델 성능 사이의 검증 절차"
+    keywords: [합성데이터, 개인정보보호, 차등프라이버시, 유틸리티검증, 재식별위험, 모델성능]
   - slug: "on-device-ai-operations-security"
     date: "2026-08-27"
     title: "온디바이스 AI 도입 판단 — NPU 성능보다 먼저 볼 운영·보안 기준"
