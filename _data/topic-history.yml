@@ -137,6 +137,10 @@ trend-research:
     keywords: [SaaS과금, 아웃컴기반과금, 컨섬션기반과금, AI에이전트, Gartner, SaaS거버넌스]
 
 business-economy:
+  - slug: "aging-labor-healthcare-housing-demand"
+    date: "2026-09-04"
+    title: "고령화가 산업 구조를 바꾸는 방식 — 노동·의료·주거 수요의 이동"
+    keywords: [고령화, 산업구조, 노동시장, 헬스케어, 통합돌봄, 시니어주거]
   - slug: "subscription-ltv-cac-payback"
     date: "2026-08-28"
     title: "구독경제 유닛 이코노믹스 — LTV·CAC·회수기간으로 성장의 질 판별하기"
