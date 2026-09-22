@@ -49,6 +49,10 @@ planning-insight:
     keywords: [RFP, 제안요청서, 요구사항정의, 벤더선정, 제안평가, 공공SW사업, IT기획]
 
 data-statistics:
+  - slug: "bayesian-ab-test-win-probability-expected-loss"
+    date: "2026-09-09"
+    title: "베이지안 A/B 테스트 실무 — 승리확률과 기대손실로 종료 시점 정하기"
+    keywords: [AB테스트, 베이지안통계, 승리확률, 기대손실, 실험종료]
   - slug: "north-star-metric-guardrail-dashboard"
     date: "2026-09-02"
     title: "지표 대시보드 설계 — North Star Metric과 가드레일 지표 연결하기"

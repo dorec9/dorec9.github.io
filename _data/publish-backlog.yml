@@ -59,7 +59,8 @@
 - date: "2026-09-09"
   category: data-statistics
   topic: "베이지안 A/B 테스트 실무 — 승리확률과 기대손실로 종료 시점 정하기"
-  status: pending
+  status: published
+  post: "2026-09-09-bayesian-ab-test-win-probability-expected-loss.md"
 
 - date: "2026-09-10"
   category: trend-research
