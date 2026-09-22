@@ -191,6 +191,12 @@ business-economy:
     keywords: ["M&A", "밸류에이션", "EV/EBITDA", "DCF", "기업가치평가", "기업금융"]
 
 project-retrospect:
+  - slug: "data-factory-contract-driven-synthetic-data"
+    date: "2026-09-07"
+    title: "Data-Factory를 만든 과정 — 합성데이터 생성을 계약·실행·검증으로 분리한 설계"
+    repo: "dorec9/Data-Factory"
+    sha: "592ab7b3eb9b86c8833448088fb3ff1da7ff3787"
+    keywords: [합성데이터, 멀티에이전트, JSONSchema, FastAPI, 결정론적생성, 데이터검증]
   - slug: "a-eye-codex-companion-retrospect"
     date: "2026-08-31"
     title: "A_eye를 만든 과정 — Codex 기록과 실시간 작업을 한 화면에 묶는 설계"

@@ -47,7 +47,8 @@
   category: project-retrospect
   topic: "Data-Factory 프로젝트 회고"
   repo: "dorec9/Data-Factory"
-  status: pending
+  status: published
+  post: "2026-09-07-data-factory-contract-driven-synthetic-data.md"
 
 - date: "2026-09-08"
   category: planning-insight
