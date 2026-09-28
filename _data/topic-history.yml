@@ -149,6 +149,10 @@ trend-research:
     keywords: [SaaS과금, 아웃컴기반과금, 컨섬션기반과금, AI에이전트, Gartner, SaaS거버넌스]
 
 business-economy:
+  - slug: "power-infrastructure-grid-delay-economics"
+    date: "2026-09-11"
+    title: "전력 인프라 투자 경제학 — 데이터센터 수요와 계통 병목 읽기"
+    keywords: [전력인프라, 데이터센터, 계통연계, 투자타당성, 현금흐름, NPV]
   - slug: "aging-labor-healthcare-housing-demand"
     date: "2026-09-04"
     title: "고령화가 산업 구조를 바꾸는 방식 — 노동·의료·주거 수요의 이동"
