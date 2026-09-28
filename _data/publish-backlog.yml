@@ -78,7 +78,8 @@
   category: project-retrospect
   topic: "my-agent 프로젝트 회고"
   repo: "dorec9/my-agent"
-  status: pending
+  status: published
+  post: "2026-09-14-my-agent-approval-execution-boundaries.md"
 
 - date: "2026-09-15"
   category: planning-insight
