@@ -1,0 +1,112 @@
+name: 클라우드 자동 발행
+
+on:
+  schedule:
+    - cron: '17 0 * * 1-5' # 평일 09:17 KST
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  issues: write
+
+concurrency:
+  group: auto-publish-cloud
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: vars.AUTO_PUBLISH_CLOUD_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: 저장소 받기
+        uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+
+      - name: Python 설치
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: 오늘 글 중복 확인
+        id: preflight
+        run: python scripts/cloud_publish_gate.py preflight >> "$GITHUB_OUTPUT"
+
+      - name: API 인증 확인
+        if: steps.preflight.outputs.publish == 'true'
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          if [ -z "$OPENAI_API_KEY" ]; then
+            echo '::error::OPENAI_API_KEY 저장소 secret이 없어 클라우드 발행을 시작할 수 없습니다.'
+            exit 1
+          fi
+
+      - name: Ruby 설치
+        if: steps.preflight.outputs.publish == 'true'
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
+          bundler-cache: true
+
+      - name: Codex로 한 편 작성
+        if: steps.preflight.outputs.publish == 'true'
+        uses: openai/codex-action@v1
+        with:
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          permission-profile: ':workspace'
+          codex-args: '--search'
+          prompt-file: '.github/prompts/cloud-publish.md'
+
+      - name: 결과 검증
+        if: steps.preflight.outputs.publish == 'true'
+        id: verify
+        run: |
+          python scripts/cloud_publish_gate.py verify >> "$GITHUB_OUTPUT"
+          if [ -f /tmp/dorec9-cloud-post-path ]; then
+            python scripts/validate_post.py "$(cat /tmp/dorec9-cloud-post-path)"
+            bundle exec jekyll build
+            git diff --check
+          fi
+
+      - name: 검증된 글만 커밋과 발행
+        if: steps.verify.outputs.post != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          POST_PATH: ${{ steps.verify.outputs.post }}
+        run: |
+          git config user.name 'dorec9'
+          git config user.email '227864403+dorec9@users.noreply.github.com'
+          git add -- "$POST_PATH" _data/topic-history.yml
+          if [ -f _data/repo-tracker.yml ] && ! git diff --quiet -- _data/repo-tracker.yml; then
+            git add -- _data/repo-tracker.yml
+          fi
+          git diff --cached --check
+          git commit -m "글 발행: $(python scripts/cloud_publish_gate.py title "$POST_PATH")"
+          gh auth setup-git
+          git push origin HEAD:main
+
+      # GITHUB_TOKEN으로 push한 커밋은 브랜치 기반 Pages 빌드를 자동으로 일으키지 않는다.
+      - name: Pages 빌드 요청과 게시 확인
+        if: steps.verify.outputs.post != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          POST_PATH: ${{ steps.verify.outputs.post }}
+        run: python scripts/cloud_publish_gate.py pages "$POST_PATH"
+
+      - name: 발행 결과 기록
+        if: steps.verify.outputs.post != ''
+        env:
+          POST_PATH: ${{ steps.verify.outputs.post }}
+        run: |
+          printf '발행 커밋: %s\n\n포스트: %s\n' "$(git rev-parse HEAD)" "$POST_PATH" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: 실패 알림 이슈
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue create --title "클라우드 자동 발행 실패: $(TZ=Asia/Seoul date +%F)" \
+            --body "실행 로그: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" || true
