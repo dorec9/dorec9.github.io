@@ -53,6 +53,10 @@ planning-insight:
     keywords: [RFP, 제안요청서, 요구사항정의, 벤더선정, 제안평가, 공공SW사업, IT기획]
 
 data-statistics:
+  - slug: "regression-prediction-description-causality"
+    date: "2026-09-16"
+    title: "회귀분석 실무 — 예측·설명·인과 목적에 따라 모델을 나누는 기준"
+    keywords: [회귀분석, 예측, 관계설명, 인과추론, 데이터누수, 계수해석]
   - slug: "bayesian-ab-test-win-probability-expected-loss"
     date: "2026-09-09"
     title: "베이지안 A/B 테스트 실무 — 승리확률과 기대손실로 종료 시점 정하기"
