@@ -1,4 +1,8 @@
 planning-insight:
+  - slug: "decision-log-reversal-conditions"
+    date: "2026-10-13"
+    title: "의사결정 로그 실무 — 결정·근거·재검토 조건을 한 장에 남기는 법"
+    keywords: [의사결정로그, 의사결정기록, 재검토조건, 결정근거, 프로젝트거버넌스, ADR]
   - slug: "okr-kpi-weekly-operating-table"
     date: "2026-09-15"
     title: "OKR과 KPI 연계 운영 — 목표와 상시 성과관리를 한 표에 담는 법"
