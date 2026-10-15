@@ -111,6 +111,10 @@ data-statistics:
     keywords: [인과추론, 준실험, 이중차분법, 성향점수매칭, 합성통제법, 데이터분석]
 
 trend-research:
+  - slug: "ai-agent-tool-permission-boundaries"
+    date: "2026-10-15"
+    title: "AI 에이전트 도구 연결의 보안 기준 — 읽기·쓰기·승인을 나누는 법"
+    keywords: [AI에이전트보안, 도구권한, 최소권한, 프롬프트인젝션, 승인흐름, 감사기록]
   - slug: "sovereign-ai-data-model-compute-control"
     date: "2026-09-10"
     title: "소버린 AI 전략 — 데이터·모델·컴퓨팅 주권을 분리해 판단하는 법"
