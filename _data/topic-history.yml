@@ -57,6 +57,10 @@ planning-insight:
     keywords: [RFP, 제안요청서, 요구사항정의, 벤더선정, 제안평가, 공공SW사업, IT기획]
 
 data-statistics:
+  - slug: "missing-data-zero-imputation-decision"
+    date: "2026-11-18"
+    title: "결측치를 0으로 채우기 전에 — 누락 원인별 처리 기준"
+    keywords: [결측치, 데이터품질, 대체값, 무응답, 누락원인]
   - slug: "simpson-paradox-segment-mix"
     date: "2026-11-11"
     title: "전체 전환율이 올랐는데 각 고객군은 악화됐다면 — 심슨의 역설 점검법"
