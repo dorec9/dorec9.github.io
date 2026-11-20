@@ -177,6 +177,10 @@ trend-research:
     keywords: [SaaS과금, 아웃컴기반과금, 컨섬션기반과금, AI에이전트, Gartner, SaaS거버넌스]
 
 business-economy:
+  - slug: "cash-conversion-cycle-payables"
+    date: "2026-11-20"
+    title: "재고는 빨리 돌았는데 현금 회수는 늦어졌다 — 현금전환주기 읽는 법"
+    keywords: [현금전환주기, 운전자본, 재고일수, 매출채권, 매입채무, DPO]
   - slug: "power-infrastructure-grid-delay-economics"
     date: "2026-09-11"
     title: "전력 인프라 투자 경제학 — 데이터센터 수요와 계통 병목 읽기"
