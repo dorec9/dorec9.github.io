@@ -29,7 +29,9 @@ flowchart LR
 | 목 | 트렌드 리서치 (trend-research) |
 | 금 | 경영·경제 분석 (business-economy) |
 
-현재 실행 주체는 로컬 Codex 예약 작업이다. PC가 꺼진 상태에서도 실행할 수 있도록 [GitHub Actions 클라우드 발행](docs/CLOUD_PUBLISH.md)을 준비했다. API 인증과 활성화가 끝나기 전까지 클라우드 작업은 실행되지 않는다. 저장소의 [AGENTS.md](AGENTS.md)가 조사·작성·검토·발행 절차를 정의한다.
+현재 정기 발행은 구독 기반 클라우드 예약 작업 **블로그 평일 클라우드 발행**으로 등록되어 있다. 일정은 **평일 09:17 KST**이며 첫 예약은 2026-11-23이다. OpenAI 관리 클라우드와 연결된 GitHub 도구를 사용하므로 사용자 PC와 앱을 켜 둘 필요가 없다. 조사·작성·검증·원격 반영·Pages 게시 확인을 한 실행에서 수행한다. 실제 실행 결과는 예약 작업 기록에서 확인한다.
+
+[클라우드 운영 안내](docs/CLOUD_PUBLISH.md)는 이 구독 기반 방식과 별도 API 비용이 드는 GitHub Actions 방식을 구분한다. 기존 Actions의 `AUTO_PUBLISH_CLOUD_ENABLED`는 활성화하지 않는다. 저장소의 [AGENTS.md](AGENTS.md)가 품질·발행 절차를 정의한다.
 
 ## 하네스 구조
 
@@ -65,6 +67,7 @@ scripts/validate_post.py 포스트 형식·분량·출처·금지어 검사
 - **2026-04** — 리눅스에서 초기 구축. tmux + Claude Code REPL cron으로 하루 4포스트 발행
 - **2026-07** — 윈도우 이전과 함께 GitHub Actions cron으로 전환. 상시 실행 제거, 하루 1포스트 로테이션
 - **2026-09** — 자동 발행 실행 주체를 ChatGPT Pro 기반 Codex 예약 작업으로 전환
+- **2026-11-22** — 구독 기반 클라우드 예약 등록, 평일 09:17 KST 실행과 원격 반영·게시 확인 절차 정리
 
 ## 기술 스택
 

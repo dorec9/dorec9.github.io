@@ -6,6 +6,8 @@
 - 기본 응답, 글, 커밋 메시지는 한국어로 작성한다.
 - 발행 대상은 `main` 브랜치이며 GitHub Pages가 배포한다.
 - 사용자가 자동 발행과 대기열 처리를 승인했다. 정상 검증을 통과한 포스트는 별도 확인 없이 커밋하고 push한다.
+- 정기 발행의 실행 주체는 구독 기반 클라우드 예약 작업 `블로그 평일 클라우드 발행`이다. 사용자 PC와 앱, 별도 모델 API 키에 의존하지 않는다.
+- 클라우드에서 Git 인증이 없으면 연결된 GitHub 도구로 검증된 파일을 한 커밋에 반영한다. 토큰이나 구독 인증 파일을 추출·복사하지 않는다.
 - `.github/workflows/auto-publish-cloud.yml`의 Codex 단계에서는 글 파일과 이력만 작성한다. 뒤의 워크플로 단계가 검증·커밋·push·Pages 게시 확인을 수행한다.
 - force push, 기존 포스트 삭제, 사용자 변경 되돌리기는 금지한다.
 
@@ -18,6 +20,8 @@
 
 ## 대기열 처리
 
+이 절차는 과거 대기열 복구를 요청받았을 때 사용한다. 현재 날짜의 정기 발행은 아래 `정기 발행` 절차를 따른다. 대기열 완료는 정기 발행의 종료 조건이 아니다.
+
 `_data/publish-backlog.yml`에서 `status: pending`인 가장 오래된 항목 하나만 처리한다.
 
 1. 항목의 `date`, `category`, `topic`을 사용한다.
@@ -28,7 +32,7 @@
 6. 아래 `주제별 시각 자료 판단`에 따라 글의 핵심을 설명하거나 증명하는 시각 자료를 만든다.
 7. `_data/topic-history.yml`에 slug, date, title, keywords를 추가한다. 회고 글은 repo와 SHA도 기록한다.
 8. 대기열 항목을 `status: published`로 바꾸고 `post`에 파일명을 기록한다.
-9. `python scripts/validate_post.py <포스트 경로>`와 `bundle exec jekyll build`를 실행한다. Ruby/Bundler가 없으면 그 사실을 기록하되, 포스트 검증은 생략하지 않는다.
+9. `python scripts/validate_post.py <포스트 경로>`와 `bash scripts/build_site.sh`, `git diff --check`를 실행한다. 빌드 스크립트는 호환되는 Ruby/Bundler가 없으면 Docker로 빌드한다. 검증 환경을 준비하지 못하면 발행하지 않고 원인을 보고한다.
 10. 검증 실패는 두 번까지 수정한다. 해결하지 못하면 `status: failed`와 `failure_reason`을 기록하고, 글 파일과 히스토리 변경은 커밋하지 않는다.
 11. 검증 성공 시 포스트, 히스토리, 대기열과 필요한 이미지 파일만 명시적으로 stage한다. `글 발행: <제목>`으로 커밋하고 `git push origin main`을 실행한다.
 12. push 후 원격 커밋과 GitHub Pages 배포 상태를 확인한다.
@@ -83,6 +87,11 @@
 
 대기열 완료 후 정기 발행을 다시 시작할 때도 한 실행에 한 편만 발행한다.
 
+- 실제 현재 날짜를 `Asia/Seoul` 기준으로 계산한다. 완료된 대기열의 마지막 날짜를 사용하지 않는다.
+- 발행 이력과 시드, 품질 규칙을 읽고 아래 요일에 맞는 미사용 주제로 현재 날짜의 글을 만든다.
+- 대기열 처리의 작성·출처·시각 자료·검증 규칙을 적용하되, 정기 글을 과거 대기열 항목에 덮어쓰지 않는다.
+- 주말 수동 시험은 최신 포스트 검사·사이트 빌드·게시 URL 확인만 수행하며 새 글을 만들지 않는다.
+
 - 월: `project-retrospect`
 - 화: `planning-insight`
 - 수: `data-statistics`
@@ -90,3 +99,14 @@
 - 금: `business-economy`
 
 동일 KST 날짜의 포스트가 이미 있으면 중복 발행하지 않는다. 월요일에 회고할 변경 저장소가 없으면 무발행을 정상으로 기록한다.
+
+### 클라우드 반영과 결과 확인
+
+1. 업로드 직전에 원격 `main`과 같은 KST 날짜의 포스트를 다시 확인한다. 이미 글이 있으면 새 글을 만들지 않고 해당 글의 게시 상태를 확인한다.
+2. 포스트 한 편과 `_data/topic-history.yml`, 회고 시 `_data/repo-tracker.yml`, 꼭 필요한 시각 자료만 반영한다. 정기 실행 중 정책·워크플로·기존 글·UI를 수정하지 않는다.
+3. 연결된 GitHub 도구를 사용할 때는 최신 `main`의 tree를 바탕으로 `create_tree` → `create_commit(parent_sha=확인한 SHA)` → `update_ref(expected_sha=확인한 SHA, force=false)` 순서로 원자적으로 반영한다.
+4. 원격이 달라지면 같은 날짜의 글을 다시 확인하고, 새 기준에 변경을 합쳐 재검증한다. 오래된 이력으로 덮어쓰거나 force push하지 않는다. 정상 Git 인증이 있으면 비강제 `git push`도 가능하다.
+5. 원격 커밋, 해당 커밋의 Pages 배포 성공, 실제 글 URL의 HTTP 200과 제목 표시를 모두 확인해야 발행 완료로 보고한다. 이미 커밋한 뒤 게시 확인만 실패했다면 새 글을 다시 생성하지 않는다.
+6. 중복·주말·월요일 변경 없음은 사유가 있는 건너뜀으로, 조사·인증·검증·게시 오류는 실패 또는 조치 필요로 보고한다. 결과물 없는 실행을 발행 성공으로 기록하지 않는다.
+
+API 기반 `.github/workflows/auto-publish-cloud.yml`과 그 전용 프롬프트는 별도 실행 경로다. 구독 기반 예약 작업에는 Actions 전용 커밋 금지 지침을 적용하지 않는다. 운영 절차는 `docs/CLOUD_PUBLISH.md`를 참조한다.
