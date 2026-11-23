@@ -1,4 +1,9 @@
 repos:
+  Data-Factory:
+    last_sha: "47cdfec72d472f1a52caebb86dfd93cf59a847a1"
+    last_post_date: "2026-11-23"
+    post_slug: "data-factory-payment-boundary-validation"
+    status: "published"
   A_eye:
     last_sha: "50e80e45c6c6ec608e4ae6d9d1df6557bb1ec0c0"
     last_post_date: "2026-11-16"

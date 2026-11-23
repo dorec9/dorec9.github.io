@@ -239,6 +239,12 @@ business-economy:
     keywords: ["M&A", "밸류에이션", "EV/EBITDA", "DCF", "기업가치평가", "기업금융"]
 
 project-retrospect:
+  - slug: "data-factory-payment-boundary-validation"
+    date: "2026-11-23"
+    title: "Data-Factory 결제 검증을 고친 과정 — 1센트 경계와 34개 회귀 검사"
+    repo: "dorec9/Data-Factory"
+    sha: "47cdfec72d472f1a52caebb86dfd93cf59a847a1"
+    keywords: [결제검증, Decimal, 금액허용오차, 경계값, 회귀검사, CSV, JSON]
   - slug: "a-eye-codex-session-companion-retrospect"
     date: "2026-11-16"
     title: "Codex 작업 기록을 읽는 데스크톱 앱 A_eye — 세션 파싱과 실시간 관제의 경계"
