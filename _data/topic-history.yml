@@ -1,4 +1,8 @@
 planning-insight:
+  - slug: "disaster-recovery-rto-rpo-planning"
+    date: "2026-11-24"
+    title: "재해복구 계획 실무 — RTO·RPO를 비용과 복구 시험으로 연결하기"
+    keywords: [재해복구, RTO, RPO, 업무영향분석, BIA, 복구시험, IT기획]
   - slug: "decision-log-reversal-conditions"
     date: "2026-10-13"
     title: "의사결정 로그 실무 — 결정·근거·재검토 조건을 한 장에 남기는 법"
