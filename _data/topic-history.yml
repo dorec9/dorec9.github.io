@@ -61,6 +61,10 @@ planning-insight:
     keywords: [RFP, 제안요청서, 요구사항정의, 벤더선정, 제안평가, 공공SW사업, IT기획]
 
 data-statistics:
+  - slug: "multiple-testing-fwer-fdr-adjustment"
+    date: "2026-11-25"
+    title: "지표를 여러 개 검정할 때 — Bonferroni·Holm·FDR 보정 선택 기준"
+    keywords: [다중검정, 다중비교, FWER, FDR, Bonferroni, Holm, BenjaminiHochberg]
   - slug: "missing-data-zero-imputation-decision"
     date: "2026-11-18"
     title: "결측치를 0으로 채우기 전에 — 누락 원인별 처리 기준"
