@@ -131,6 +131,10 @@ data-statistics:
     keywords: [인과추론, 준실험, 이중차분법, 성향점수매칭, 합성통제법, 데이터분석]
 
 trend-research:
+  - slug: "post-quantum-crypto-inventory-vendor-readiness"
+    date: "2026-11-26"
+    title: "양자내성암호 전환 동향 — 암호 자산 조사와 공급사 준비도"
+    keywords: [양자내성암호, PQC, 암호민첩성, 공급사관리, 암호자산, IT기획]
   - slug: "ai-agent-tool-permission-boundaries"
     date: "2026-10-15"
     title: "AI 에이전트 도구 연결의 보안 기준 — 읽기·쓰기·승인을 나누는 법"
