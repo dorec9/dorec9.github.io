@@ -189,6 +189,10 @@ trend-research:
     keywords: [SaaS과금, 아웃컴기반과금, 컨섬션기반과금, AI에이전트, Gartner, SaaS거버넌스]
 
 business-economy:
+  - slug: "semiconductor-cycle-sales-inventory-capex"
+    date: "2026-11-27"
+    title: "반도체 경기 읽기 — 매출·재고·설비투자를 함께 보는 기준"
+    keywords: [반도체산업, 산업사이클, 반도체매출, 재고, 설비투자, 경영분석]
   - slug: "cash-conversion-cycle-payables"
     date: "2026-11-20"
     title: "재고는 빨리 돌았는데 현금 회수는 늦어졌다 — 현금전환주기 읽는 법"
